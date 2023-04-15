@@ -1,0 +1,20 @@
+PODS:
+  - rapidjson (1.1.0)
+  - Tink (1.6.1):
+    - rapidjson (~> 1.1.0)
+
+DEPENDENCIES:
+  - Tink
+
+SPEC REPOS:
+  trunk:
+    - rapidjson
+    - Tink
+
+SPEC CHECKSUMS:
+  rapidjson: 926ddeea70d7a0987b6d746cd9fa51f165467cd3
+  Tink: 6bc1e1c5381a750ca2ee7e897cc3ee448bfe175d
+
+PODFILE CHECKSUM: 533fc62311fa0fb3359881d6638fe2c6579490bc
+
+COCOAPODS: 1.12.0
