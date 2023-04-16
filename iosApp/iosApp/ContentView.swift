@@ -1,11 +1,14 @@
 import SwiftUI
-import shared
+import Tink
 
 struct ContentView: View {
-	let greet = Greeting().greet()
-
 	var body: some View {
-		Text(greet)
+        VStack {
+            Text("hogehoge")
+            Text(TINKConfig().description)
+            Text("fugafuga")
+        }
+        
 	}
 }
 

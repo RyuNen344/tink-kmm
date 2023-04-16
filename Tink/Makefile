@@ -11,6 +11,7 @@ clean:
 
 .PHONY: bootstrap-cocoapods
 bootstrap-cocoapods: clean
+	@bundle install
 	@bundle exec pod install
 
 .PHONY: build-cocoapods
