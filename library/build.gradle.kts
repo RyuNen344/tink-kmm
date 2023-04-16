@@ -11,13 +11,24 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
     ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
+        it.compilations.named("main") {
+            cinterops.create("Tink") {
+                includeDirs("$rootDir/Tink/Pods/Tink/Frameworks/Tink.framework/Headers")
+            }
+        }
+        it.binaries {
+            framework {
+                baseName = "KMMTink"
+                binaryOption("bundleId", "io.github.ryunen344.tink")
+                binaryOption("bundleVersion", version.toString())
+                linkerOpts("-framework", "Tink")
+                linkerOpts("-F${rootDir}/Tink/Pods/Tink/Frameworks/Tink.framework")
+            }
         }
     }
 

@@ -5,6 +5,8 @@
 
 # intellij
 *.iml
+/.idea/.gitignore
+/.idea/.name
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml

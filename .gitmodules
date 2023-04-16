@@ -1,0 +1,3 @@
+[submodule "TinkStub"]
+	path = TinkStub
+	url = https://github.com/RyuNen344/tink.git

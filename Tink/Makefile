@@ -4,13 +4,18 @@ PODS_PROJECT = $(PODS_ROOT)/Pods.xcodeproj
 SYMROOT = $(PODS_ROOT)/Build
 IPHONEOS_DEPLOYMENT_TARGET = 9.0
 
+.PHONY: clean
+clean:
+	@rm -rf Pods
+	@rm -rf Tink.xcframework
+
 .PHONY: bootstrap-cocoapods
-bootstrap-cocoapods:
+bootstrap-cocoapods: clean
 	@bundle exec pod install
 
 .PHONY: build-cocoapods
 build-cocoapods: bootstrap-cocoapods
-	xcodebuild -project "$(PODS_PROJECT)" \
+	@xcodebuild -project "$(PODS_PROJECT)" \
 		-sdk iphoneos \
 		-configuration Release \
 		-alltargets \
@@ -19,8 +24,8 @@ build-cocoapods: bootstrap-cocoapods
 		SYMROOT="$(SYMROOT)" \
 		CLANG_ENABLE_MODULE_DEBUGGING=NO \
 		BITCODE_GENERATION_MODE=bitcode \
-		IPHONEOS_DEPLOYMENT_TARGET="$(IPHONEOS_DEPLOYMENT_TARGET)" | bundle exec xcpretty
-	xcodebuild -project "$(PODS_PROJECT)" \
+		IPHONEOS_DEPLOYMENT_TARGET="$(IPHONEOS_DEPLOYMENT_TARGET)" | bundle exec xcpretty -c
+	@xcodebuild -project "$(PODS_PROJECT)" \
 		-sdk iphonesimulator \
 		-configuration Release \
 		-alltargets \
@@ -29,17 +34,15 @@ build-cocoapods: bootstrap-cocoapods
 		SYMROOT="$(SYMROOT)" \
 		CLANG_ENABLE_MODULE_DEBUGGING=NO \
 		BITCODE_GENERATION_MODE=bitcode \
-		IPHONEOS_DEPLOYMENT_TARGET="$(IPHONEOS_DEPLOYMENT_TARGET)" | bundle exec xcpretty
+		IPHONEOS_DEPLOYMENT_TARGET="$(IPHONEOS_DEPLOYMENT_TARGET)" | bundle exec xcpretty -c
 
 .PHONY: archive
 archive: build-cocoapods
-	@rm -rf Tink.xcframework
-	xcodebuild -create-xcframework \
+	@xcodebuild -create-xcframework \
 		-framework Pods/Pods/Build/Release-iphonesimulator/Tink/Tink.framework \
 		-framework Pods/Pods/Build/Release-iphoneos/Tink/Tink.framework \
-		-output Tink.xcframework | bundle exec xcpretty
+		-output Tink.xcframework | bundle exec xcpretty -c
 
-.PHONY: clean
-clean:
-	@rm -rf Pods
-	@rm -rf Tink.xcframework
+.PHONY: check
+check:
+	xcrun lipo -info Pods/Tink/Frameworks/Tink.framework/Tink
