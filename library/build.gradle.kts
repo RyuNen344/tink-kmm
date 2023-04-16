@@ -19,7 +19,6 @@ kotlin {
         iosSimulatorArm64(),
         iosArm64(),
     ).forEach {
-        println(it.name)
         it.compilations.named("main") {
             cinterops.create("Tink") {
                 includeDirs(xcframeWorkPath(it.konanTarget) + "/Tink.framework/Headers")
@@ -43,7 +42,11 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("com.google.crypto.tink:tink-android:1.7.0")
+            }
+        }
         val androidUnitTest by getting
         val iosX64Main by getting
         val iosSimulatorArm64Main by getting
@@ -75,9 +78,6 @@ android {
 }
 
 fun Project.xcframeWorkPath(target: KonanTarget): String {
-    return "$rootDir/Tink/Tink.xcframework/" + if (target is KonanTarget.IOS_ARM64) {
-        "ios-arm64"
-    } else {
-        "ios-arm64_x86_64-simulator"
-    }
+    return "$rootDir/Tink/Tink.xcframework/" +
+           if (target is KonanTarget.IOS_ARM64) "ios-arm64" else "ios-arm64_x86_64-simulator"
 }

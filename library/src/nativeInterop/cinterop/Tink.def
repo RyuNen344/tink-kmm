@@ -1,3 +1,3 @@
 language = Objective-C
-package = io.github.ryunen344.tink.interop
+package = com.google.crypto.tink
 headers = "Tink.h"
