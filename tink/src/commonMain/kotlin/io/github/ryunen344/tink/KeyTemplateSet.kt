@@ -1,5 +1,7 @@
 package io.github.ryunen344.tink
 
+import io.github.ryunen344.tink.exception.GeneralSecurityException
+
 enum class KeyTemplateSet(val value: String) {
     // AEAD
     AES128_GCM("AES128_GCM"),
@@ -43,4 +45,5 @@ enum class KeyTemplateSet(val value: String) {
     ;
 }
 
-expect val KeyTemplateSet.template: KeyTemplate
+@Throws(GeneralSecurityException::class)
+expect fun KeyTemplateSet.template(): KeyTemplate

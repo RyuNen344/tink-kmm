@@ -1,6 +1,7 @@
 package io.github.ryunen344.tink
 
 import com.google.crypto.tink.KeyTemplates
+import io.github.ryunen344.tink.exception.GeneralSecurityException
 
-actual val KeyTemplateSet.template: KeyTemplate
-    get() = KeyTemplates.get(value)
+@Throws(GeneralSecurityException::class)
+actual fun KeyTemplateSet.template(): KeyTemplate = KeyTemplates.get(value)
