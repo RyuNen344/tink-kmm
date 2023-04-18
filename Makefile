@@ -1,4 +1,4 @@
-PODS_ROOT = ./Tink
+PODS_ROOT = ./Framework
 STUB_ROOT = ./TinkStub
 
 .PHONY: clean

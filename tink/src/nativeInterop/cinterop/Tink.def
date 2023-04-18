@@ -1,3 +1,4 @@
+depends = Security
 language = Objective-C
 package = com.google.crypto.tink
 headers = "Tink.h"

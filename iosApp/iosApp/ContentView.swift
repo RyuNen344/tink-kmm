@@ -1,14 +1,19 @@
 import SwiftUI
-import Tink
+import TinKMM
 
 struct ContentView: View {
+    private let config = TinkConfig()
+
 	var body: some View {
         VStack {
             Text("hogehoge")
-            Text(TINKConfig().description)
+            Text(config.description)
             Text("fugafuga")
+            Button("register") {
+                config.register()
+            }
         }
-        
+
 	}
 }
 

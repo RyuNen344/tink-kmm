@@ -36,9 +36,10 @@ DerivedData/
 .bundle/vendor/
 
 # Tink
-Tink/Pods
-Tink/Tink.xcframework
+Framework/Pods
+Framework/Tink.xcframework
 
 # build
 build/
 .build/
+releases/

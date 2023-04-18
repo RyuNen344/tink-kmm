@@ -18,4 +18,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Tink-KMM"
-include(":library")
+include(":tink")

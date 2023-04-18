@@ -1,36 +1,43 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 import org.jetbrains.kotlin.konan.target.KonanTarget
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("maven-publish")
 }
 
 kotlin {
     android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
+        publishLibraryVariants("release")
     }
+
+    val frameworkName = "TinKMM"
+    val xcf = XCFramework(frameworkName)
 
     listOf(
         iosX64(),
         iosSimulatorArm64(),
         iosArm64(),
     ).forEach {
+        println(xcframeWorkPath(it.konanTarget))
         it.compilations.named("main") {
             cinterops.create("Tink") {
+                compilerOpts("-I${xcframeWorkPath(it.konanTarget)}/Tink.framework/Tink")
                 includeDirs(xcframeWorkPath(it.konanTarget) + "/Tink.framework/Headers")
             }
         }
         it.binaries {
             framework {
-                baseName = "KMMTink"
+                baseName = frameworkName
+                isStatic = true
+                embedBitcode(BitcodeEmbeddingMode.DISABLE)
                 binaryOption("bundleId", "io.github.ryunen344.tink")
                 binaryOption("bundleVersion", version.toString())
                 linkerOpts("-framework", "Tink")
                 linkerOpts("-F${xcframeWorkPath(it.konanTarget)}")
+                xcf.add(this)
             }
         }
     }
@@ -75,9 +82,23 @@ android {
     defaultConfig {
         minSdk = 24
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 fun Project.xcframeWorkPath(target: KonanTarget): String {
-    return "$rootDir/Tink/Tink.xcframework/" +
+    return "$rootDir/Framework/Tink.xcframework/" +
            if (target is KonanTarget.IOS_ARM64) "ios-arm64" else "ios-arm64_x86_64-simulator"
+}
+
+
+publishing {
+    repositories {
+        maven {
+            name = "Local"
+            setUrl("$rootDir/releases/maven")
+        }
+    }
 }
