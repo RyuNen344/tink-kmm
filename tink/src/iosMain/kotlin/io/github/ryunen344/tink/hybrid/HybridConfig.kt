@@ -1,5 +1,7 @@
 package io.github.ryunen344.tink.hybrid
 
+import com.google.crypto.tink.TINKConfig
+import com.google.crypto.tink.TINKHybridConfig
 import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import kotlinx.cinterop.ObjCObjectVar
