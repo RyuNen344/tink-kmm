@@ -21,22 +21,18 @@ kotlin {
         iosSimulatorArm64(),
         iosArm64(),
     ).forEach {
-        println(xcframeWorkPath(it.konanTarget))
         it.compilations.named("main") {
             cinterops.create("Tink") {
-                compilerOpts("-I${xcframeWorkPath(it.konanTarget)}/Tink.framework/Tink")
-                includeDirs(xcframeWorkPath(it.konanTarget) + "/Tink.framework/Headers")
+                compilerOpts(tinkOption(it.konanTarget))
             }
         }
         it.binaries {
             framework {
                 baseName = frameworkName
-                isStatic = true
                 embedBitcode(BitcodeEmbeddingMode.DISABLE)
                 binaryOption("bundleId", "io.github.ryunen344.tink")
                 binaryOption("bundleVersion", version.toString())
-                linkerOpts("-framework", "Tink")
-                linkerOpts("-F${xcframeWorkPath(it.konanTarget)}")
+                linkerOpts(tinkOption(it.konanTarget))
                 xcf.add(this)
             }
         }
@@ -88,11 +84,18 @@ android {
     }
 }
 
-fun Project.xcframeWorkPath(target: KonanTarget): String {
+fun Project.xcfPath(target: KonanTarget): String {
     return "$rootDir/Framework/Tink.xcframework/" +
-           if (target is KonanTarget.IOS_ARM64) "ios-arm64" else "ios-arm64_x86_64-simulator"
+        if (target is KonanTarget.IOS_ARM64) "ios-arm64" else "ios-arm64_x86_64-simulator"
 }
 
+fun Project.tinkOption(target: KonanTarget): List<String> {
+    return listOf(
+        "-framework",
+        "Tink",
+        "-F${xcfPath(target)}"
+    )
+}
 
 publishing {
     repositories {
