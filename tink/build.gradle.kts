@@ -50,15 +50,15 @@ kotlin {
         }
         create("iosMain") {
             dependsOn(getByName("commonMain"))
-            getByName("iosX64Main").dependsOn(this)
-            getByName("iosSimulatorArm64Main").dependsOn(this)
-            getByName("iosArm64Main").dependsOn(this)
+            maybeCreate("iosX64Main").dependsOn(this)
+            maybeCreate("iosSimulatorArm64Main").dependsOn(this)
+            maybeCreate("iosArm64Main").dependsOn(this)
         }
         create("iosTest") {
             dependsOn(getByName("commonTest"))
-            getByName("iosX64Test").dependsOn(this)
-            getByName("iosSimulatorArm64Test").dependsOn(this)
-            getByName("iosArm64Test").dependsOn(this)
+            maybeCreate("iosX64Test").dependsOn(this)
+            maybeCreate("iosSimulatorArm64Test").dependsOn(this)
+            maybeCreate("iosArm64Test").dependsOn(this)
         }
     }
 }

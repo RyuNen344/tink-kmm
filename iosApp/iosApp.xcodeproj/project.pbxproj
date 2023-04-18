@@ -13,6 +13,8 @@
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		D709EDD429EE1C9400148042 /* TinKMM.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D709EDD329EE1C9400148042 /* TinKMM.xcframework */; };
 		D709EDD529EE1C9400148042 /* TinKMM.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D709EDD329EE1C9400148042 /* TinKMM.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D709EDDB29EF092400148042 /* Tink.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D709EDDA29EF092300148042 /* Tink.xcframework */; };
+		D709EDDC29EF092400148042 /* Tink.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D709EDDA29EF092300148042 /* Tink.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +25,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D709EDD529EE1C9400148042 /* TinKMM.xcframework in Embed Frameworks */,
+				D709EDDC29EF092400148042 /* Tink.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +40,7 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D709EDD329EE1C9400148042 /* TinKMM.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TinKMM.xcframework; path = ../tink/build/XCFrameworks/release/TinKMM.xcframework; sourceTree = "<group>"; };
+		D709EDDA29EF092300148042 /* Tink.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Tink.xcframework; path = ../Framework/Tink.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D709EDD429EE1C9400148042 /* TinKMM.xcframework in Frameworks */,
+				D709EDDB29EF092400148042 /* Tink.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +96,7 @@
 		7555FFB0242A642200829871 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D709EDDA29EF092300148042 /* Tink.xcframework */,
 				D709EDD329EE1C9400148042 /* TinKMM.xcframework */,
 			);
 			name = Frameworks;
