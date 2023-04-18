@@ -15,10 +15,13 @@ actual class HybridConfig {
     @Throws(GeneralSecurityException::class)
     actual fun register() {
         memScoped {
-            val error = alloc<ObjCObjectVar<NSError?>>()
-            val hybridConfig = TINKHybridConfig(error.ptr)
-            TINKConfig.registerConfig(config = hybridConfig, error = error.ptr)
-            error.value?.let { throw GeneralSecurityException(cause = it.asThrowable()) }
+            val initError = alloc<ObjCObjectVar<NSError?>>()
+            val hybridConfig = TINKHybridConfig(initError.ptr)
+            initError.value?.let { throw GeneralSecurityException(cause = it.asThrowable()) }
+
+            val registerError = alloc<ObjCObjectVar<NSError?>>()
+            TINKConfig.registerConfig(config = hybridConfig, error = registerError.ptr)
+            registerError.value?.let { throw GeneralSecurityException(cause = it.asThrowable()) }
         }
     }
 }
