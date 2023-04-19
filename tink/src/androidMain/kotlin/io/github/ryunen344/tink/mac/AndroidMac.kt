@@ -4,7 +4,7 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 
 internal typealias NativeMac = com.google.crypto.tink.Mac
 
-class AndroidMac(private val native: NativeMac) : Mac {
+class AndroidMac(private val native: NativeMac) : Mac, NativeMac by native {
     constructor(handle: com.google.crypto.tink.KeysetHandle) :
         this(handle.getPrimitive(NativeMac::class.java))
 

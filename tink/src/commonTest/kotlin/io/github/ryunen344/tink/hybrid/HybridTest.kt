@@ -1,6 +1,7 @@
 package io.github.ryunen344.tink.hybrid
 
 import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
 import io.github.ryunen344.tink.generateNew
 import io.github.ryunen344.tink.getPrimitive
 import io.github.ryunen344.tink.publicKeysetHandle
@@ -13,7 +14,8 @@ class HybridTest {
     fun test_exec_encryption() {
         runCatching {
             HybridConfig().register()
-            val privateKeysetHandle = generateNew(KeyTemplateSet.ECIES_P256_HKDF_HMAC_SHA256_AES128_GCM.template())
+            val privateKeysetHandle =
+                KeysetHandleGenerator.generateNew(KeyTemplateSet.ECIES_P256_HKDF_HMAC_SHA256_AES128_GCM.template())
             val publicKeysetHandle = privateKeysetHandle.publicKeysetHandle()
 
             val plaintext = "hogehogehowgheowa"

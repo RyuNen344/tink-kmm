@@ -4,7 +4,7 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 
 internal typealias NativePublicKeySign = com.google.crypto.tink.PublicKeySign
 
-class AndroidPublicKeySign(private val native: NativePublicKeySign) : PublicKeySign {
+class AndroidPublicKeySign(private val native: NativePublicKeySign) : PublicKeySign, NativePublicKeySign by native {
     constructor(handle: com.google.crypto.tink.KeysetHandle) :
         this(handle.getPrimitive(NativePublicKeySign::class.java))
 
