@@ -1,7 +1,9 @@
 package io.github.ryunen344.tink
 
+import com.google.crypto.tink.BinaryKeysetWriter
 import io.github.ryunen344.tink.aead.Aead
 import io.github.ryunen344.tink.aead.AndroidAead
+import io.github.ryunen344.tink.aead.NativeAead
 import io.github.ryunen344.tink.daead.AndroidDeterministicAead
 import io.github.ryunen344.tink.daead.DeterministicAead
 import io.github.ryunen344.tink.exception.GeneralSecurityException
@@ -15,12 +17,31 @@ import io.github.ryunen344.tink.signature.AndroidPublicKeySign
 import io.github.ryunen344.tink.signature.AndroidPublicKeyVerify
 import io.github.ryunen344.tink.signature.PublicKeySign
 import io.github.ryunen344.tink.signature.PublicKeyVerify
+import java.io.ByteArrayOutputStream
 import kotlin.reflect.KClass
 
 actual typealias KeysetHandle = com.google.crypto.tink.KeysetHandle
 
 @Throws(GeneralSecurityException::class)
-actual fun generateNew(keyTemplate: KeyTemplate): KeysetHandle = KeysetHandle.generateNew(keyTemplate)
+actual fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate): KeysetHandle =
+    KeysetHandle.generateNew(keyTemplate)
+
+@Throws(GeneralSecurityException::class)
+actual fun KeysetHandleGenerator.Companion.read(
+    reader: KeysetReader,
+    aead: Aead,
+): KeysetHandle = KeysetHandle.read(reader, aead as NativeAead)
+
+@Throws(GeneralSecurityException::class)
+actual fun KeysetHandleGenerator.Companion.readNoSecret(keyset: ByteArray): KeysetHandle =
+    KeysetHandle.readNoSecret(keyset)
+
+@Throws(GeneralSecurityException::class)
+actual fun KeysetHandle.writeNoSecret(): ByteArray =
+    ByteArrayOutputStream().use {
+        writeNoSecret(BinaryKeysetWriter.withOutputStream(it))
+        it.toByteArray()
+    }
 
 @Suppress("UNCHECKED_CAST")
 @Throws(GeneralSecurityException::class)

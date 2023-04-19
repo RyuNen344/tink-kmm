@@ -4,7 +4,10 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 
 internal typealias NativeDeterministicAead = com.google.crypto.tink.DeterministicAead
 
-class AndroidDeterministicAead(private val native: NativeDeterministicAead) : DeterministicAead {
+class AndroidDeterministicAead(
+    private val native: NativeDeterministicAead,
+) : DeterministicAead, NativeDeterministicAead by native {
+
     constructor(handle: com.google.crypto.tink.KeysetHandle) :
         this(handle.getPrimitive(NativeDeterministicAead::class.java))
 

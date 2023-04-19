@@ -1,6 +1,7 @@
 package io.github.ryunen344.tink.aead
 
 import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
 import io.github.ryunen344.tink.generateNew
 import io.github.ryunen344.tink.getPrimitive
 import io.github.ryunen344.tink.template
@@ -11,7 +12,7 @@ class AeadTest {
     @Test
     fun test_exec_encryption() {
         AeadConfig().register()
-        val handle = generateNew(KeyTemplateSet.AES256_GCM.template()).getPrimitive(Aead::class)
+        val handle = KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template()).getPrimitive(Aead::class)
         val plaintext = "hogehogehowgheowa"
         val associatedData = "associated"
         println("input $plaintext")

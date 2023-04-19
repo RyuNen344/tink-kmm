@@ -11,7 +11,7 @@ import io.github.ryunen344.tink.util.toNSData
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 
-class DarwinAead(private val native: TINKAeadProtocol) : Aead {
+class DarwinAead(val native: TINKAeadProtocol) : Aead {
 
     @Throws(GeneralSecurityException::class)
     constructor(handle: TINKKeysetHandle) : this(

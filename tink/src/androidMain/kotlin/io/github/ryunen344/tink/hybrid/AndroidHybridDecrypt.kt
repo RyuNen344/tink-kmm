@@ -4,7 +4,7 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 
 internal typealias NativeHybridDecrypt = com.google.crypto.tink.HybridDecrypt
 
-class AndroidHybridDecrypt(private val native: NativeHybridDecrypt) : HybridDecrypt {
+class AndroidHybridDecrypt(private val native: NativeHybridDecrypt) : HybridDecrypt, NativeHybridDecrypt by native {
     constructor(handle: com.google.crypto.tink.KeysetHandle) :
         this(handle.getPrimitive(NativeHybridDecrypt::class.java))
 

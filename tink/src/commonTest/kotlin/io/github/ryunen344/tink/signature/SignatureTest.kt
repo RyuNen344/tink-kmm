@@ -1,6 +1,7 @@
 package io.github.ryunen344.tink.signature
 
 import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
 import io.github.ryunen344.tink.generateNew
 import io.github.ryunen344.tink.getPrimitive
 import io.github.ryunen344.tink.publicKeysetHandle
@@ -11,7 +12,7 @@ class SignatureTest {
     @Test
     fun test_exec_encryption() {
         SignatureConfig().register()
-        val privateKeysetHandle = generateNew(KeyTemplateSet.ED25519.template())
+        val privateKeysetHandle = KeysetHandleGenerator.generateNew(KeyTemplateSet.ED25519.template())
         val signer = privateKeysetHandle.getPrimitive(PublicKeySign::class)
 
         val input = "hogewefaewawefawefa"

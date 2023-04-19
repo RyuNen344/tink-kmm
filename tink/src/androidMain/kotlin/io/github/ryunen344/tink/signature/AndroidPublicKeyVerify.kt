@@ -4,7 +4,10 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 
 internal typealias NativePublicKeyVerify = com.google.crypto.tink.PublicKeyVerify
 
-class AndroidPublicKeyVerify(private val native: NativePublicKeyVerify) : PublicKeyVerify {
+class AndroidPublicKeyVerify(
+    private val native: NativePublicKeyVerify,
+) : PublicKeyVerify, NativePublicKeyVerify by native {
+
     constructor(handle: com.google.crypto.tink.KeysetHandle) :
         this(handle.getPrimitive(NativePublicKeyVerify::class.java))
 
