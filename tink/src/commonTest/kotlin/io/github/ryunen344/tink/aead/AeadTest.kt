@@ -11,7 +11,7 @@ import kotlin.test.assertEquals
 class AeadTest {
     @Test
     fun test_exec_encryption() {
-        AeadConfig().register()
+        AeadConfig.register()
         val handle = KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template()).getPrimitive(Aead::class)
         val plaintext = "hogehogehowgheowa"
         val associatedData = "associated"
