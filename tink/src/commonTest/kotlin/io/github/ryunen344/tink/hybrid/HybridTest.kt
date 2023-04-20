@@ -13,7 +13,7 @@ class HybridTest {
     @Test
     fun test_exec_encryption() {
         runCatching {
-            HybridConfig().register()
+            HybridConfig.register()
             val privateKeysetHandle =
                 KeysetHandleGenerator.generateNew(KeyTemplateSet.ECIES_P256_HKDF_HMAC_SHA256_AES128_GCM.template())
             val publicKeysetHandle = privateKeysetHandle.publicKeysetHandle()

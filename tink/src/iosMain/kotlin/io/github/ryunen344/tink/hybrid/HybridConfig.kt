@@ -8,12 +8,8 @@ import io.github.ryunen344.tink.util.memScopedInstance
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 
-actual class HybridConfig {
-    @Throws(GeneralSecurityException::class)
-    actual fun register() {
-        memScopedInstance(
-            block = { TINKConfig.registerConfig(config = TINKHybridConfig(it.ptr), error = it.ptr) },
-            onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
-        )
-    }
-}
+@Throws(GeneralSecurityException::class)
+actual fun HybridConfig.Companion.register(): Unit = memScopedInstance(
+    block = { TINKConfig.registerConfig(config = TINKHybridConfig(it.ptr), error = it.ptr) },
+    onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
+)
