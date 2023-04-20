@@ -25,11 +25,10 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
-            "./TinkStub/objc/bazel-bin"
-            "./TinkStub/objc/bazel-objc"
-            "./TinkStub/objc/bazel-out"
-            "./Framework/Tink.xcframework"
-            "./Framework/Tink.xcframework"
+            TinkStub/objc/bazel-bin
+            TinkStub/objc/bazel-objc
+            TinkStub/objc/bazel-out
+            Framework/Tink.xcframework
           key: v1-bazel-${{ runner.os }}-${{ hashFiles('Framework/Podfile.lock') }}
       - run: make archive
       - uses: gradle/gradle-build-action@v2
