@@ -21,7 +21,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: testDebugUnitTest
-      - uses: EnricoMi/publish-unit-test-result-aciton@v2
+      - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
