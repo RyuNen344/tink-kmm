@@ -12,5 +12,5 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
-      - run: java -version
+      - uses: gradle/gradle-build-action@v2
       - run: ./gradlew tasks
