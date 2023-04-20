@@ -1,5 +1,11 @@
 name: test-android
-on: pull_request
+on: 
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   unit-test:
