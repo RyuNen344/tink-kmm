@@ -10,7 +10,7 @@ import kotlin.test.Test
 class MacTest {
     @Test
     fun test_exec_encryption() {
-        MacConfig().register()
+        MacConfig.register()
         val mac =
             KeysetHandleGenerator.generateNew(KeyTemplateSet.HMAC_SHA512_512BITTAG.template()).getPrimitive(Mac::class)
         val plaintext = "hogehogehowgheowa"

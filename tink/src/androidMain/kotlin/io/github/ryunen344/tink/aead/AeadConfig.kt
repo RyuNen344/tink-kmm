@@ -1,11 +1,8 @@
 package io.github.ryunen344.tink.aead
 
-import com.google.crypto.tink.aead.AeadConfig
 import io.github.ryunen344.tink.exception.GeneralSecurityException
 
-actual class AeadConfig {
-    @Throws(GeneralSecurityException::class)
-    actual fun register() {
-        AeadConfig.register()
-    }
-}
+internal typealias NativeAeadConfig = com.google.crypto.tink.aead.AeadConfig
+
+@Throws(GeneralSecurityException::class)
+actual fun AeadConfig.Companion.register() = NativeAeadConfig.register()

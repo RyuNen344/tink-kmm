@@ -11,7 +11,7 @@ import kotlin.test.Test
 class SignatureTest {
     @Test
     fun test_exec_encryption() {
-        SignatureConfig().register()
+        SignatureConfig.register()
         val privateKeysetHandle = KeysetHandleGenerator.generateNew(KeyTemplateSet.ED25519.template())
         val signer = privateKeysetHandle.getPrimitive(PublicKeySign::class)
 

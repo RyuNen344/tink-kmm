@@ -11,7 +11,7 @@ import kotlin.test.assertEquals
 class DeterministicAeadTest {
     @Test
     fun test_exec_encryption() {
-        DeterministicAeadConfig().register()
+        DeterministicAeadConfig.register()
         val handle = KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_SIV.template())
             .getPrimitive(DeterministicAead::class)
         val plaintext = "hogehogehowgheowa"

@@ -5,6 +5,6 @@ import kotlin.test.Test
 class AeadConfigTest {
     @Test
     fun test_invoke_register() {
-        AeadConfig().register()
+        AeadConfig.register()
     }
 }
