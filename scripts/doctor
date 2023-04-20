@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+. "$(git rev-parse --show-toplevel)/scripts/utilities"
+
+go_to_repo_root
+
+declare -a missing_required_components=()
+info 'check command...'
+
+if ! checking_command 'java'; then
+  missing_required_components+=('java')
+  warn "Please install JDK and export it to PATH"
+fi
+
+# until release Tink 1.7.0 at CocoaPods
+if ! checking_command 'bazel'; then
+  missing_required_components+=('bazel')
+  warn "Please install bazel and export it to PATH"
+fi
+
+if ! checking_command 'ruby'; then
+  missing_required_components+=('ruby')
+  warn "Please install ruby"
+fi
+
+if ! checking_command 'bundler'; then
+  missing_required_components+=('bundler')
+  warn "Please gem install bundler"
+fi
+
+sleep 1
+
+if ((0 < ${#missing_required_components[@]})); then
+  err '---------'
+  err "${missing_required_components[*]} are required. Please install them to complete setup."
+  fatal '---------'
+fi
+
+info "Found all required commands. ${_TADA_}"

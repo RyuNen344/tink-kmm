@@ -1,0 +1,48 @@
+readonly _ESCAPE_="$(printf '\033')"
+readonly _WARNING_="$(printf '\U26A0')"
+readonly _CHECK_MARK_="$(printf '\U2705')"
+readonly _TADA_="$(printf '\U1F389')"
+readonly _REPO_ROOT_ABS_PATH_="$(git rev-parse --show-toplevel)"
+
+checking_command() {
+  local -r cmd="$1"
+
+  sleep 1
+
+  if type "$cmd" >/dev/null 2>&1; then
+    info "$_CHECK_MARK_ ${_ESCAPE_}[32m$cmd${_ESCAPE_}[m is found"
+    return 0
+  elif type "$cmd.bat" >/dev/null 2>&1; then
+    info "$_CHECK_MARK_ ${_ESCAPE_}[32m$cmd${_ESCAPE_}[m is found"
+    return 0
+  else
+    warn "$_WARNING_ ${_ESCAPE_}[33m$cmd${_ESCAPE_}[m is not found"
+    return 1
+  fi
+}
+
+fatal() {
+  err "$@"
+  exit 1
+}
+
+err() {
+  echo "${_ESCAPE_}[31m[ERROR]${_ESCAPE_}[m $@" 1>&2
+}
+
+warn() {
+  echo "${_ESCAPE_}[33m[WARN]${_ESCAPE_}[m $@" 1>&2
+}
+
+info() {
+  echo "${_ESCAPE_}[32m[INFO]${_ESCAPE_}[m $@" 1>&2
+}
+
+run() {
+  echo "Executing... $@" 1>&2
+  "$@"
+}
+
+go_to_repo_root() {
+  cd "$_REPO_ROOT_ABS_PATH_"
+}
