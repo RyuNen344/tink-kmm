@@ -1,5 +1,5 @@
 name: test-android
-on: 
+on:
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -21,3 +21,8 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: testDebugUnitTest
+      - uses: EnricoMi/publish-unit-test-result-aciton@v2
+        if: always()
+        with:
+          files: |
+            **/test-results/**/*.xml
