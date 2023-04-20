@@ -5,6 +5,7 @@ import io.github.ryunen344.tink.daead.register
 import io.github.ryunen344.tink.hybrid.HybridConfig
 import io.github.ryunen344.tink.hybrid.register
 import io.github.ryunen344.tink.signature.SignatureConfig
+import io.github.ryunen344.tink.signature.register
 import kotlin.test.Test
 
 class KeyTemplateTest {
@@ -12,7 +13,7 @@ class KeyTemplateTest {
     fun test_KeyTemplateSet() {
         HybridConfig.register()
         DeterministicAeadConfig.register()
-        SignatureConfig().register()
+        SignatureConfig.register()
         KeyTemplateSet.values().map(KeyTemplateSet::template).forEach(::println)
     }
 }
