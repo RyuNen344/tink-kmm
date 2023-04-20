@@ -1,12 +1,16 @@
 name: test-android
-on:
-  pull_request
+on: pull_request
 
 jobs:
-  check-bats-version:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: sdkman/sdkman-action@v1
-        id: sdkman
+      # TODO replace after release
+      # - uses: sdkman/sdkman-action@v1
+      - uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: gradle
       - run: java -version
