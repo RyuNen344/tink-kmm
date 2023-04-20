@@ -13,3 +13,4 @@ jobs:
           java-version: "17"
           distribution: "temurin"
       - run: java -version
+      - run: ./gradlew tasks
