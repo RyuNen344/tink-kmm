@@ -18,11 +18,17 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: bazelbuild/setup-bazelisk@v2
+      - run: make archive
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: iosX64Test
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
+          check_name: Test Results iOSX64
           files: |
             **/test-results/**/*.xml
