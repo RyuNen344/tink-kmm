@@ -1,0 +1,38 @@
+name: test-ios
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      # TODO replace after release
+      # - uses: sdkman/sdkman-action@v1
+      - uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: bazelbuild/setup-bazelisk@v2
+      - uses: actions/cache@v3
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+      - run: make archive
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: iosX64Test
+      - uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: always()
+        with:
+          check_name: Test Results iOSX64
+          files: |
+            **/test-results/**/*.xml

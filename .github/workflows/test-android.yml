@@ -1,0 +1,29 @@
+name: test-android
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # TODO replace after release
+      # - uses: sdkman/sdkman-action@v1
+      - uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: testDebugUnitTest
+      - uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: Test Results android
+          files: |
+            **/test-results/**/*.xml
