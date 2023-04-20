@@ -2,7 +2,9 @@ package io.github.ryunen344.tink.mac
 
 import io.github.ryunen344.tink.exception.GeneralSecurityException
 
-expect class MacConfig constructor() {
-    @Throws(GeneralSecurityException::class)
-    fun register()
+class MacConfig {
+    companion object
 }
+
+@Throws(GeneralSecurityException::class)
+expect fun MacConfig.Companion.register()

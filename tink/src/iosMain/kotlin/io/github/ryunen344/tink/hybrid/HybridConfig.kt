@@ -9,7 +9,8 @@ import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 
 @Throws(GeneralSecurityException::class)
-actual fun HybridConfig.Companion.register(): Unit = memScopedInstance(
-    block = { TINKConfig.registerConfig(config = TINKHybridConfig(it.ptr), error = it.ptr) },
-    onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
-)
+actual fun HybridConfig.Companion.register(): Unit =
+    memScopedInstance(
+        block = { TINKConfig.registerConfig(config = TINKHybridConfig(it.ptr), error = it.ptr) },
+        onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
+    )

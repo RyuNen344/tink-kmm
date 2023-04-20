@@ -9,7 +9,8 @@ import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 
 @Throws(GeneralSecurityException::class)
-actual fun DeterministicAeadConfig.Companion.register(): Unit = memScopedInstance(
-    block = { TINKConfig.registerConfig(config = TINKDeterministicAeadConfig(it.ptr), error = it.ptr) },
-    onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
-)
+actual fun DeterministicAeadConfig.Companion.register(): Unit =
+    memScopedInstance(
+        block = { TINKConfig.registerConfig(config = TINKDeterministicAeadConfig(it.ptr), error = it.ptr) },
+        onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
+    )
