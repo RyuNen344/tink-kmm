@@ -12,15 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: sdkman/sdkman-action@main
-      - run: |
-          export JAVA_HOME=$HOME/.sdkman/candidates/java/current
-          export PATH=$JAVA_HOME/bin:$PATH
-          echo $JAVA_HOME
-          echo $PATH
-      - run: cat $HOME/.bash_profile
-      - run: sdk current java
-      - run: ./gradlew testDebugUnitTest jacocoMergedReport
+      - uses: ./.github/actions/sdkman
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: testDebugUnitTest jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
