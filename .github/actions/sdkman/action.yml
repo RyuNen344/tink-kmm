@@ -21,7 +21,6 @@ runs:
       run: |
         source "$HOME/.sdkman/bin/sdkman-init.sh"
         sdk env install
-        which sdk >> $GITHUB_PATH
         echo "JAVA_HOME=$HOME/.sdkman/candidates/java/current" >> $GITHUB_ENV
         echo "PATH=$JAVA_HOME/bin:$PATH" >> $GITHUB_ENV
 
