@@ -18,8 +18,9 @@ jobs:
           export PATH=$JAVA_HOME/bin:$PATH
           echo $JAVA_HOME
           echo $PATH
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-      - run: sdk env && ./gradlew testDebugUnitTest jacocoMergedReport
+      - run: cat $HOME/.bash_profile
+      - run: sdk current java
+      - run: ./gradlew testDebugUnitTest jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
