@@ -29,6 +29,16 @@ if ! checking_command 'bundler'; then
   warn "Please gem install bundler"
 fi
 
+if ! checking_command 'go'; then
+  missing_required_components+=('go')
+  warn "Please install go"
+fi
+
+if ! checking_command 'reviewdog'; then
+  missing_required_components+=('reviewdog')
+  warn "Please go install github.com/reviewdog/reviewdog/cmd/reviewdog@latest"
+fi
+
 sleep 1
 
 if ((0 < ${#missing_required_components[@]})); then

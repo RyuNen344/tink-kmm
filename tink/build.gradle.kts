@@ -73,6 +73,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    lint {
+        abortOnError = false
+        sarifReport = true
+    }
 }
 
 fun Project.xcfPath(target: KonanTarget): String {
