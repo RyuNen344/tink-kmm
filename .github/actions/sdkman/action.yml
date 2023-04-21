@@ -6,16 +6,16 @@ runs:
     - uses: actions/cache@v3
       with:
         path: "$HOME/.sdkman"
-        key: ${{ runner.os }}-sdkman-${{ hashFiles('.sdkmanrc') }}
+        key: v1-sdkman-${{ runner.os }}-${{ hashFiles('.sdkmanrc') }}
 
     - name: install
       shell: bash
       run: |
-        if [-d "$HOME/.sdkman"]; then
+        if [ -d "$HOME/.sdkman" ]; then
           echo "sdkman already installed"
         else
           echo "install sdkman"
           export SDKMAN_DIR="$HOME/.sdkman" && curl -s "https://get.sdkman.io" | bash
         fi
         source "$HOME/.sdkman/bin/sdkman-init.sh"
-        sdk version
+        sdk env install
