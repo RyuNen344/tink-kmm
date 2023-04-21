@@ -36,7 +36,8 @@ jobs:
           export PATH=$JAVA_HOME/bin:$PATH
           echo $JAVA_HOME
           echo $PATH
-      - run: ./gradlew lint detekt
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+      - run: sdk env && ./gradlew lint detekt
       - uses: yutailang0119/action-android-lint@v3
         with:
           report-path: "**/build/reports/lint-results*.xml"
