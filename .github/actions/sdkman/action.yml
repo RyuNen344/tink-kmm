@@ -19,9 +19,10 @@ runs:
     - name: setup sdkman
       shell: bash
       run: |
-        source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk env install
-        echo JAVA_HOME=$HOME/.sdkman/candidates/java/current >> $GITHUB_PATH
-        echo PATH=$JAVA_HOME/bin:$PATH >> $GITHUB_PATH
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
+        sdk env install        
+        which sdk >> $GITHUB_PATH
+        echo $HOME/.sdkman/candidates/java/current >> $GITHUB_PATH
 
     - if: ${{ steps.cache-sdkman.outputs.cache-hit != 'true' }}
       uses: actions/cache/save@v3
