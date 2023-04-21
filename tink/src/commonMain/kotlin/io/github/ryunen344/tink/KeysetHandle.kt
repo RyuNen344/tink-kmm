@@ -6,6 +6,15 @@ import kotlin.reflect.KClass
 
 expect class KeysetHandle
 
+@Throws(GeneralSecurityException::class)
+expect fun KeysetHandle.writeNoSecret(): ByteArray
+
+@Throws(GeneralSecurityException::class)
+expect fun <P : TinkPrimitive> KeysetHandle.getPrimitive(kClass: KClass<P>): P
+
+@Throws(GeneralSecurityException::class)
+expect fun KeysetHandle.publicKeysetHandle(): KeysetHandle
+
 class KeysetHandleGenerator {
     companion object
 }
@@ -18,12 +27,3 @@ expect fun KeysetHandleGenerator.Companion.read(reader: KeysetReader, aead: Aead
 
 @Throws(GeneralSecurityException::class)
 expect fun KeysetHandleGenerator.Companion.readNoSecret(keyset: ByteArray): KeysetHandle
-
-@Throws(GeneralSecurityException::class)
-expect fun KeysetHandle.writeNoSecret(): ByteArray
-
-@Throws(GeneralSecurityException::class)
-expect fun <P : TinkPrimitive> KeysetHandle.getPrimitive(kClass: KClass<P>): P
-
-@Throws(GeneralSecurityException::class)
-expect fun KeysetHandle.publicKeysetHandle(): KeysetHandle

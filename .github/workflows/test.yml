@@ -1,0 +1,61 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/sdkman
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: testDebugUnitTest
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: jacocoMergedReport
+      - uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: Test Results android
+          files: |
+            **/test-results/**/*.xml
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  unit-test-ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/sdkman
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: bazelbuild/setup-bazelisk@v2
+      - run: make bootstrap-submodule
+      - uses: actions/cache@v3
+        with:
+          path: |
+            build/bazel
+            Framework/Tink.xcframework
+          key: v2-bazel-${{ runner.os }}-${{ hashFiles('Framework/Podfile') }}
+      - run: make archive
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: iosX64Test
+      - uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: always()
+        with:
+          check_name: Test Results iosX64
+          files: |
+            **/test-results/**/*.xml

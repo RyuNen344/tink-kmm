@@ -1,0 +1,33 @@
+name: "setup sdkman and install via .sdkmanrc"
+description: "install sdkman"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/cache/restore@v3
+      id: cache-sdkman
+      with:
+        path: |
+          ~/.sdkman
+        key: v1-sdkman-${{ runner.os }}-${{ hashFiles('.sdkmanrc') }}
+
+    - if: ${{ steps.cache-sdkman.outputs.cache-hit != 'true' }}
+      name: install sdkman
+      shell: bash
+      run: |
+        export SDKMAN_DIR="$HOME/.sdkman" && curl -s "https://get.sdkman.io" | bash
+
+    - name: setup sdkman
+      shell: bash
+      run: |
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
+        sdkman_auto_answer=true
+        sdkman_selfupdate_enable=false
+        sdk env install
+        echo "JAVA_HOME=$HOME/.sdkman/candidates/java/current" >> $GITHUB_ENV
+
+    - if: ${{ steps.cache-sdkman.outputs.cache-hit != 'true' }}
+      uses: actions/cache/save@v3
+      with:
+        path: |
+          ~/.sdkman
+        key: v1-sdkman-${{ runner.os }}-${{ hashFiles('.sdkmanrc') }}

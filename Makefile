@@ -4,17 +4,17 @@ STUB_ROOT = ./TinkStub
 .PHONY: clean
 clean:
 	@rm -rf $(PODS_ROOT)/Tink.xcframework
-	@rm -rf "$(STUB_ROOT)bazel-*"
+	@rm -rf "$(STUB_ROOT)/objc/bazel-*"
 
 .PHONY: bootstrap-submodule
-bootstrap-submodule: clean
+bootstrap-submodule:
 	@git submodule init
 	@git submodule update
 
 .PHONY: build-bazel
 build-bazel: bootstrap-submodule
-	@cd $(STUB_ROOT)/objc && bazel build --apple_platform_type=ios --xcode_version="$(cat ./../.xcode-version)" //:Tink && cd ../..
+	@cd $(STUB_ROOT)/objc && bazelisk --output_base=./../../build/bazel build --disk_cache=./../../build/bazel --apple_platform_type=ios --xcode_version="$(cat ./../.xcode-version)" //:Tink && cd ../..
 
 .PHONY: archive
 archive: build-bazel
-	@unzip $(STUB_ROOT)/objc/bazel-bin/Tink.xcframework.zip -d $(PODS_ROOT)
+	@unzip -o $(STUB_ROOT)/objc/bazel-bin/Tink.xcframework.zip -d $(PODS_ROOT)
