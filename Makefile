@@ -13,7 +13,7 @@ bootstrap-submodule:
 
 .PHONY: build-bazel
 build-bazel: bootstrap-submodule
-	@cd $(STUB_ROOT)/objc && bazel build --apple_platform_type=ios --xcode_version="$(cat ./../.xcode-version)" //:Tink && cd ../..
+	@cd $(STUB_ROOT)/objc && bazel build --disk_cache=build/bazel --apple_platform_type=ios --xcode_version="$(cat ./../.xcode-version)" //:Tink && cd ../..
 
 .PHONY: archive
 archive: build-bazel

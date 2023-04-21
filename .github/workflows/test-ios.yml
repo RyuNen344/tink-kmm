@@ -26,6 +26,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
+            build/bazel
             TinkStub/objc/bazel-bin
             TinkStub/objc/bazel-objc
             TinkStub/objc/bazel-out
