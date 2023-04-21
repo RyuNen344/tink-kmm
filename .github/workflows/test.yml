@@ -19,7 +19,10 @@ jobs:
       - uses: ./.github/actions/sdkman
       - uses: gradle/gradle-build-action@v2
         with:
-          arguments: testDebugUnitTest jacocoMergedReport
+          arguments: testDebugUnitTest
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:

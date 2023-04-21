@@ -34,7 +34,10 @@ jobs:
       - uses: ./.github/actions/sdkman
       - uses: gradle/gradle-build-action@v2
         with:
-          arguments: lint detekt
+          arguments: lint
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: detekt
       - uses: yutailang0119/action-android-lint@v3
         with:
           report-path: "**/build/reports/lint-results*.xml"
