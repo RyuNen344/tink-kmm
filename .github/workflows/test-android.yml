@@ -7,6 +7,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# for sdkman to work
+defaults:
+  run:
+    shell: bash -ieo pipefail {0}
+
 jobs:
   unit-test:
     runs-on: ubuntu-latest
