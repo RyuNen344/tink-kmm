@@ -31,6 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-setup@v1
       - uses: sdkman/sdkman-action@main
+      - run: export JAVA_HOME=$HOME/.sdkman/candidates/java/current
       - run: ./gradlew lint detekt
       - uses: yutailang0119/action-android-lint@v3
         with:
@@ -45,3 +46,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-setup@v1
       - uses: sdkman/sdkman-action@main
+      - run: export JAVA_HOME=$HOME/.sdkman/candidates/java/current

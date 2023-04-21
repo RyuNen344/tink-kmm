@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: sdkman/sdkman-action@main
+      - run: export JAVA_HOME=$HOME/.sdkman/candidates/java/current
       - run: ./gradlew testDebugUnitTest
       - run: ./gradlew jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@v2
