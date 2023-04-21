@@ -27,7 +27,7 @@ actual typealias KeysetHandle = com.google.crypto.tink.TINKKeysetHandle
 
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(keyTemplate, it.ptr) },
+    block = { KeysetHandle(keyTemplate = keyTemplate, error = it.ptr) },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 

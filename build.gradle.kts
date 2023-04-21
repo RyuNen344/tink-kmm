@@ -10,6 +10,11 @@ plugins {
     id("jacoco")
 }
 
+dependencies {
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0-RC1")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-rules-libraries:1.23.0-RC1")
+}
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
@@ -23,6 +28,7 @@ detekt {
             fileTree("${rootProject.rootDir}").matching {
                 include("**/*.kt", "**/*.kts")
                 exclude("**/build/")
+                exclude("TinkStub")
             }
         )
     )
@@ -55,18 +61,24 @@ tasks.create<JacocoReport>("jacocoMergedReport") {
 
     project.gradle.afterProject {
         if (rootProject != this && plugins.hasPlugin("jacoco")) {
-            executionData.from.addAll(fileTree(buildDir) {
-                includes += mutableSetOf("**/*.exec", "**/*.ec")
-            })
-            sourceDirectories.from.addAll(listOf(
-                "$projectDir/src/androidMain/kotlin",
-                "$projectDir/src/commonMain/kotlin",
-                "$buildDir/generated/source/kapt/debug",
-            ))
-            classDirectories.from.addAll(listOf(
-                "$buildDir/tmp/kotlin-classes/debug",
-                "$buildDir/intermediates/javac/debug/classes"
-            ))
+            executionData.from.addAll(
+                fileTree(buildDir) {
+                    includes += mutableSetOf("**/*.exec", "**/*.ec")
+                }
+            )
+            sourceDirectories.from.addAll(
+                listOf(
+                    "$projectDir/src/androidMain/kotlin",
+                    "$projectDir/src/commonMain/kotlin",
+                    "$buildDir/generated/source/kapt/debug",
+                )
+            )
+            classDirectories.from.addAll(
+                listOf(
+                    "$buildDir/tmp/kotlin-classes/debug",
+                    "$buildDir/intermediates/javac/debug/classes"
+                )
+            )
         }
     }
 }

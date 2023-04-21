@@ -39,8 +39,8 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
 import kotlinx.cinterop.ptr
-import kotlinx.cinterop.value
 
+@Suppress("CyclomaticComplexMethod")
 @Throws(GeneralSecurityException::class)
 actual fun KeyTemplateSet.template(): KeyTemplate = memScopedInstance(
     block = {
