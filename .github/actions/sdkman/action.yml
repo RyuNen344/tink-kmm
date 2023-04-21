@@ -23,7 +23,8 @@ runs:
         echo JAVA_HOME=$HOME/.sdkman/candidates/java/current >> $GITHUB_PATH
         echo PATH=$JAVA_HOME/bin:$PATH >> $GITHUB_PATH
 
-    - uses: actions/cache/save@v3
+    - if: ${{ steps.cache-sdkman.outputs.cache-hit != 'true' }}
+      uses: actions/cache/save@v3
       with:
         path: |
           ~/.sdkman
