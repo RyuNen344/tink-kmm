@@ -32,5 +32,4 @@ jobs:
             **/test-results/**/*.xml
       - uses: codecov/codecov-action@v3
         with:
-          directory: build/reports/jacoco/jacocoMergedReport
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN }}
