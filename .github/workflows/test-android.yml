@@ -13,14 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: sdkman/sdkman-action@main
-      - run: java -version
-      - run: which java
-      - uses: gradle/gradle-build-action@v2
-        with:
-          arguments: testDebugUnitTest
-      - uses: gradle/gradle-build-action@v2
-        with:
-          arguments: jacocoMergedReport
+      - run: ./gradlew testDebugUnitTest
+      - run: ./gradlew jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
