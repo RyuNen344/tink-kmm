@@ -86,8 +86,20 @@ android {
             }
         }
     }
+    buildTypes.getByName("debug") {
+        enableUnitTestCoverage = true
+        enableAndroidTestCoverage = true
+    }
     lint {
         abortOnError = false
+    }
+    with(sourceSets["main"]) {
+        java.srcDirs("src/androidMain/kotlin", "src/commonMain/kotlin")
+        res.srcDirs("src/androidMain/res")
+    }
+    with(sourceSets["test"]) {
+        java.srcDirs("src/androidUnitTest/kotlin", "src/commonTest/kotlin")
+        res.srcDirs("src/androidUnitTest/res")
     }
 }
 

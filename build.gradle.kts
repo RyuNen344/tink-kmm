@@ -59,13 +59,13 @@ tasks.create<JacocoReport>("jacocoMergedReport") {
                 includes += mutableSetOf("**/*.exec", "**/*.ec")
             })
             sourceDirectories.from.addAll(listOf(
-                "$projectDir/src/main/java",
-                "$projectDir/src/main/kotlin",
+                "$projectDir/src/androidMain/kotlin",
+                "$projectDir/src/commonMain/kotlin",
                 "$buildDir/generated/source/kapt/debug",
             ))
             classDirectories.from.addAll(listOf(
-                "$buildDir/tmp/kotlin-classes/",
-                "$buildDir/intermediates/javac/"
+                "$buildDir/tmp/kotlin-classes/debug",
+                "$buildDir/intermediates/javac/debug/classes"
             ))
         }
     }
