@@ -17,4 +17,4 @@ build-bazel: bootstrap-submodule
 
 .PHONY: archive
 archive: build-bazel
-	@unzip $(STUB_ROOT)/objc/bazel-bin/Tink.xcframework.zip -f -d $(PODS_ROOT)
+	@unzip -f $(STUB_ROOT)/objc/bazel-bin/Tink.xcframework.zip -d $(PODS_ROOT)
