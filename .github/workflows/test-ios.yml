@@ -29,7 +29,7 @@ jobs:
             TinkStub/objc/bazel-objc
             TinkStub/objc/bazel-out
             Framework/Tink.xcframework
-          key: v1-bazel-${{ runner.os }}-${{ hashFiles('Framework/Podfile.lock') }}
+          key: v1-bazel-${{ runner.os }}-${{ hashFiles('Framework/Podfile') }}
       - run: make archive
       - uses: gradle/gradle-build-action@v2
         with:
