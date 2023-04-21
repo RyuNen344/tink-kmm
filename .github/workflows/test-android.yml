@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: sdkman/sdkman-action@main
-      - run: source "~/.sdkman/bin/sdkman-init.sh"
+      - run: source "$HOME/.sdkman/bin/sdkman-init.sh"
       - run: sdk env
       - run: java -version
       - run: which java
