@@ -30,12 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-setup@v1
-      # TODO replace after release
-      # - uses: sdkman/sdkman-action@v1
-      - uses: actions/setup-java@v3
-        with:
-          java-version: "17"
-          distribution: "temurin"
+      - uses: sdkman/sdkman-action@main
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: lint detekt
@@ -51,9 +46,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-setup@v1
-      # TODO replace after release
-      # - uses: sdkman/sdkman-action@v1
-      - uses: actions/setup-java@v3
-        with:
-          java-version: "17"
-          distribution: "temurin"
+      - uses: sdkman/sdkman-action@main
