@@ -1,5 +1,9 @@
-name: test-ios
+name: test
+
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -8,7 +12,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  unit-test:
+  unit-test-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/sdkman
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: testDebugUnitTest jacocoMergedReport
+      - uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: Test Results android
+          files: |
+            **/test-results/**/*.xml
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  unit-test-ios:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,6 +53,6 @@ jobs:
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
-          check_name: Test Results iOSX64
+          check_name: Test Results iosX64
           files: |
             **/test-results/**/*.xml
