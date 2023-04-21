@@ -30,7 +30,7 @@ jobs:
           check_name: Test Results android
           files: |
             **/test-results/**/*.xml
-      - uses: madrapps/jacoco-report@v1.3
+      - uses: codecov/codecov-action@v3
         with:
-          paths: build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+          directory: build/reports/jacoco/jacocoMergedReport
           token: ${{ secrets.GITHUB_TOKEN }}
