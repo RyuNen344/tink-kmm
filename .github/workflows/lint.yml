@@ -31,6 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-setup@v1
       - uses: sdkman/sdkman-action@main
+        id: sdkman
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: lint detekt
@@ -47,3 +48,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-setup@v1
       - uses: sdkman/sdkman-action@main
+        id: sdkman
