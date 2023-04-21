@@ -22,6 +22,7 @@ jobs:
         with:
           bundler-cache: true
       - uses: bazelbuild/setup-bazelisk@v2
+      - run: make bootstrap-submodule
       - uses: actions/cache@v3
         with:
           path: |

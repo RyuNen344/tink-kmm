@@ -7,7 +7,7 @@ clean:
 	@rm -rf "$(STUB_ROOT)bazel-*"
 
 .PHONY: bootstrap-submodule
-bootstrap-submodule: clean
+bootstrap-submodule:
 	@git submodule init
 	@git submodule update
 
