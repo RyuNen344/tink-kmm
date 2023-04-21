@@ -26,4 +26,7 @@ expect fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate)
 expect fun KeysetHandleGenerator.Companion.read(reader: KeysetReader, aead: Aead): KeysetHandle
 
 @Throws(GeneralSecurityException::class)
+expect fun KeysetHandleGenerator.Companion.readClearText(reader: KeysetReader): KeysetHandle
+
+@Throws(GeneralSecurityException::class)
 expect fun KeysetHandleGenerator.Companion.readNoSecret(keyset: ByteArray): KeysetHandle
