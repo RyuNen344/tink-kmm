@@ -48,7 +48,7 @@ jobs:
           path: |
             build/bazel
             Framework/Tink.xcframework
-          key: v1-bazel-${{ runner.os }}-${{ hashFiles('Framework/Podfile') }}
+          key: v2-bazel-${{ runner.os }}-${{ hashFiles('Framework/Podfile') }}
       - run: make archive
       - uses: gradle/gradle-build-action@v2
         with:
