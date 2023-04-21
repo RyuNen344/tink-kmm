@@ -19,3 +19,7 @@ runs:
         fi
         source "$HOME/.sdkman/bin/sdkman-init.sh"
         sdk env install
+        export JAVA_HOME=$HOME/.sdkman/candidates/java/current
+        export PATH=$JAVA_HOME/bin:$PATH
+        echo $JAVA_HOME
+        echo $PATH
