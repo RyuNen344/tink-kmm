@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    //trick: for the same plugin versions in all sub-modules
     id("com.android.application").version("7.4.2").apply(false)
     id("com.android.library").version("7.4.2").apply(false)
     kotlin("android").version("1.8.20").apply(false)
     kotlin("multiplatform").version("1.8.20").apply(false)
     id("io.gitlab.arturbosch.detekt").version("1.23.0-RC1")
-    id("com.louiscad.complete-kotlin") version "1.1.0"
+    id("com.louiscad.complete-kotlin").version("1.1.0")
+    id("jacoco")
 }
 
 tasks.register("clean", Delete::class) {
@@ -37,6 +37,36 @@ allprojects {
             jvmTarget = JavaVersion.VERSION_17.toString()
             languageVersion = "1.8"
             apiVersion = "1.8"
+        }
+    }
+}
+
+jacoco {
+    version = "0.8.9"
+}
+
+tasks.create<JacocoReport>("jacocoMergedReport") {
+    group = "verification"
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+        html.required.set(true)
+    }
+
+    project.gradle.afterProject {
+        if (rootProject != this && plugins.hasPlugin("jacoco")) {
+            executionData.from.addAll(fileTree(buildDir) {
+                includes += mutableSetOf("**/*.exec", "**/*.ec")
+            })
+            sourceDirectories.from.addAll(listOf(
+                "$projectDir/src/main/java",
+                "$projectDir/src/main/kotlin",
+                "$buildDir/generated/source/kapt/debug",
+            ))
+            classDirectories.from.addAll(listOf(
+                "$buildDir/tmp/kotlin-classes/",
+                "$buildDir/intermediates/javac/"
+            ))
         }
     }
 }

@@ -7,6 +7,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("maven-publish")
+    id("jacoco")
 }
 
 kotlin {
@@ -68,14 +69,25 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.all { test ->
+            test.testLogging.showStandardStreams = true
+            jacoco.jacocoVersion = "0.8.9"
+            test.extensions.configure<JacocoTaskExtension> {
+                isIncludeNoLocationClasses = true
+                excludes = listOf("jdk.internal.*")
+            }
+        }
+    }
     lint {
         abortOnError = false
-        sarifReport = true
     }
 }
 
