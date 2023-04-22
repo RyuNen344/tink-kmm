@@ -1,3 +1,5 @@
 package io.github.ryunen344.tink
 
-actual typealias KeysetReader = com.google.crypto.tink.TINKKeysetReader
+import com.google.crypto.tink.TINKKeysetReader
+
+actual open class KeysetReader(val native: TINKKeysetReader)

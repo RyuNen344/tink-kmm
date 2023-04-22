@@ -22,14 +22,14 @@ actual fun KeysetHandleGenerator.Companion.read(
     reader: KeysetReader,
     aead: Aead,
 ): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(keysetReader = reader, andKey = (aead as DarwinAead).native, error = it.ptr) },
+    block = { KeysetHandle(keysetReader = reader.native, andKey = (aead as DarwinAead).native, error = it.ptr) },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.readClearText(reader: KeysetReader): KeysetHandle = memScopedInstance(
     block = {
-        TINKKeysetHandle.create(cleartextKeysetHandleWithKeysetReader = reader, error = it.ptr)
+        TINKKeysetHandle.create(cleartextKeysetHandleWithKeysetReader = reader.native, error = it.ptr)
             ?: throw GeneralSecurityException(cause = it.value?.asThrowable())
     },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
