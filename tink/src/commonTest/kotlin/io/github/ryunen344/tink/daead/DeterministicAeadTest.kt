@@ -133,12 +133,12 @@ class DeterministicAeadTest {
 
         // Also test that daead can decrypt ciphertexts encrypted with a non-primary key. We use
         // JSON_DAEAD_KEYSET to encrypt with the first key.
-        val subHandle = KeysetHandleGenerator.readClearText(JsonKeysetReader(JSON_DAEAD_KEYSET))
-        val subDaead = subHandle.getPrimitive(DeterministicAead::class)
+        val secondaryHandle = KeysetHandleGenerator.readClearText(JsonKeysetReader(JSON_DAEAD_KEYSET))
+        val secondaryDaead = secondaryHandle.getPrimitive(DeterministicAead::class)
         assertContentEquals(
             plaintext,
-            subDaead.decryptDeterministically(
-                subDaead.encryptDeterministically(plaintext, associatedData),
+            secondaryDaead.decryptDeterministically(
+                secondaryDaead.encryptDeterministically(plaintext, associatedData),
                 associatedData
             )
         )
