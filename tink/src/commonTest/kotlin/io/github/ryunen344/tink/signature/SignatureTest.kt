@@ -22,7 +22,6 @@ class SignatureTest {
         set: KeyTemplateSet,
         data: ByteArray = "data".encodeToByteArray(),
     ) {
-
         val privateHandle = KeysetHandleGenerator.generateNew(set.template())
         val publicHandle = privateHandle.publicKeysetHandle()
 
