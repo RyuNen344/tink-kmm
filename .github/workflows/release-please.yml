@@ -18,3 +18,5 @@ jobs:
           release-type: simple
           package-name: release-please-action
           include-v-in-tag: false
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
