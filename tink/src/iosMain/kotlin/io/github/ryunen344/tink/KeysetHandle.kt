@@ -18,33 +18,11 @@ import io.github.ryunen344.tink.signature.PublicKeyVerify
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
 import io.github.ryunen344.tink.util.toByteArray
-import io.github.ryunen344.tink.util.toNSData
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 import kotlin.reflect.KClass
 
 actual typealias KeysetHandle = com.google.crypto.tink.TINKKeysetHandle
-
-@Throws(GeneralSecurityException::class)
-actual fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(keyTemplate = keyTemplate, error = it.ptr) },
-    onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
-)
-
-@Throws(GeneralSecurityException::class)
-actual fun KeysetHandleGenerator.Companion.read(
-    reader: KeysetReader,
-    aead: Aead,
-): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(keysetReader = reader, andKey = (aead as DarwinAead).native, error = it.ptr) },
-    onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
-)
-
-@Throws(GeneralSecurityException::class)
-actual fun KeysetHandleGenerator.Companion.readNoSecret(keyset: ByteArray): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(noSecretKeyset = keyset.toNSData(), error = it.ptr) },
-    onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
-)
 
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandle.writeNoSecret(): ByteArray = memScopedInstance(
