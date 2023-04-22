@@ -36,7 +36,7 @@ detekt {
 
 allprojects {
     group = "io.github.ryunen344.tink"
-    version = "0.0.1"
+    version = File("${rootProject.rootDir}/version.txt").readText().trim()
 
     tasks.withType(KotlinCompile::class) {
         kotlinOptions {
