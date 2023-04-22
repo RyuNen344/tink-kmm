@@ -1,0 +1,14 @@
+name: "setup konan cache"
+description: "chache .konan directory"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/cache@v3
+      id: cache-sdkman
+      with:
+        path: |
+          ~/.konan
+        key: v1-konan-${{ runner.os }}-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('tink/build.gradle.kts') }}
+        restore-keys: |
+          v1-konan-${{ runner.os }}-${{ hashFiles('build.gradle.kts') }}
+          v1-konan-${{ runner.os }}
