@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/sdkman
+      - uses: ./.github/actions/konan
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: testDebugUnitTest
@@ -38,6 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/sdkman
+      - uses: ./.github/actions/konan
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
