@@ -6,4 +6,3 @@ expect class JsonKeysetReader @Throws(JsonException::class) constructor(bytes: B
     @Throws(JsonException::class)
     constructor(json: String)
 }
-
