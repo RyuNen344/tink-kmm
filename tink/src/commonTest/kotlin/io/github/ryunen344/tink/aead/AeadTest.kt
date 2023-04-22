@@ -43,11 +43,11 @@ class AeadTest {
     ) {
         val handle = KeysetHandleGenerator.generateNew(template)
         val aead = handle.getPrimitive(Aead::class)
-        val associatedData = "associatedData".encodeToByteArray()
+        val plaintext = "plaintext".encodeToByteArray()
         val invalid = "invalid".encodeToByteArray()
 
         assertFailsWith<GeneralSecurityException> {
-            aead.decrypt(invalid, associatedData)
+            aead.decrypt(plaintext, invalid)
         }
     }
 
