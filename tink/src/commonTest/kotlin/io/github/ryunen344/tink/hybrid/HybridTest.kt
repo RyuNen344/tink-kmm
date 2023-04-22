@@ -228,7 +228,7 @@ class HybridTest {
                     }
                 ]
             }
-            """.trimIndent()
+        """.trimIndent()
 
         val JSON_PRIVATE_KEYSET_WITH_MULTIPLE_KEYS = """
             {
