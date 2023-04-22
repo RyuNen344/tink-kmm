@@ -5,6 +5,7 @@ import platform.Foundation.NSError
 internal fun NSError.asThrowable(): Throwable {
     val message = buildString {
         append(domain ?: "NSError")
+        append(" ")
         append("code [$code]")
         userInfo.forEach {
             appendLine("{${it.key} = ${it.value}}")
