@@ -196,16 +196,16 @@ class HybridTest {
     private companion object {
         val JSON_PRIVATE_KEYSET = """
             {
-                "primaryKeyId": 1885000158,
+                "primaryKeyId": 647048814,
                 "key": [
                     {
                         "keyData": {
-                            "typeUrl": "type.googleapis.com/google.crypto.tink.HpkePrivateKey",
-                            "value": "GiBXM1jmpJqe7HUTTkQxRwEld3bvIPTBhqGcI09ki9H0mRIqGiCwWh0y63GfObeWuYZcuLIiFz+15ElOFL7rhf9rbWxdBBIGGAEQAQgB",
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPrivateKey",
+                            "value": "EosBEkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARogI4P/E3HzF6GSRNM4XlRwKBjGw81REj8ovlBno2uNvc8iIQC7Zjep7K4nPGJljgg6GCOrovBJcJRGWMsg8XLDTh0CdxogOIDYp690Aa0r2+xWsdhEZzRS5MVg8y0BdwQwMuYR63s=",
                             "keyMaterialType": "ASYMMETRIC_PRIVATE"
                         },
                         "status": "ENABLED",
-                        "keyId": 1885000158,
+                        "keyId": 647048814,
                         "outputPrefixType": "TINK"
                     }
                 ]
@@ -214,16 +214,16 @@ class HybridTest {
 
         val JSON_PUBLIC_KEYSET = """
             {
-                "primaryKeyId": 1885000158,
+                "primaryKeyId": 647048814,
                 "key": [
                     {
                         "keyData": {
-                            "typeUrl": "type.googleapis.com/google.crypto.tink.HpkePublicKey",
-                            "value": "GiCwWh0y63GfObeWuYZcuLIiFz+15ElOFL7rhf9rbWxdBBIGGAEQAQgB",
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPublicKey",
+                            "value": "EkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARogI4P/E3HzF6GSRNM4XlRwKBjGw81REj8ovlBno2uNvc8iIQC7Zjep7K4nPGJljgg6GCOrovBJcJRGWMsg8XLDTh0Cdw==",
                             "keyMaterialType": "ASYMMETRIC_PUBLIC"
                         },
                         "status": "ENABLED",
-                        "keyId": 1885000158,
+                        "keyId": 647048814,
                         "outputPrefixType": "TINK"
                     }
                 ]
@@ -232,37 +232,37 @@ class HybridTest {
 
         val JSON_PRIVATE_KEYSET_WITH_MULTIPLE_KEYS = """
             {
-                "primaryKeyId": 405658073,
+                "primaryKeyId": 1013057693,
                 "key": [
                     {
                         "keyData": {
-                            "typeUrl": "type.googleapis.com/google.crypto.tink.HpkePrivateKey",
-                            "value": "GiBXM1jmpJqe7HUTTkQxRwEld3bvIPTBhqGcI09ki9H0mRIqGiCwWh0y63GfObeWuYZcuLIiFz+15ElOFL7rhf9rbWxdBBIGGAEQAQgB",
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPrivateKey",
+                            "value": "EosBEkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARogI4P/E3HzF6GSRNM4XlRwKBjGw81REj8ovlBno2uNvc8iIQC7Zjep7K4nPGJljgg6GCOrovBJcJRGWMsg8XLDTh0CdxogOIDYp690Aa0r2+xWsdhEZzRS5MVg8y0BdwQwMuYR63s=",
                             "keyMaterialType": "ASYMMETRIC_PRIVATE"
                         },
                         "status": "ENABLED",
-                        "keyId": 1885000158,
+                        "keyId": 647048814,
                         "outputPrefixType": "TINK"
                     },
                     {
                         "keyData": {
                             "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPrivateKey",
-                            "value": "GiAGLU3EgraobyU/aOJalcfR2jUUwK/ubd5mTYHIzLHBnBKiASIgJDF8fcNyDS6BcgYpeVPkJ2/ZBG+Mum30OId4D4CzDuQaIP9J2qo487Shr+MxMIkE3VvMro1r4Z+VFoTP3QWVTpziElwYARJSElAYARISEggQIAoEEBAIAwoGEBAKAggQCjh0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNDdHJIbWFjQWVhZEtleQoEEAMIAg==",
+                            "value": "EooBEkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARogYDMh2pw+/IEZ5OTcWsnl3k8QunjsB1spu2Ex71L82WEiIECb/Un5ANDbIFdOpf+fxK0DJiTno1XVKuJym1WCqZTzGiBC8yu+DPjOz2Ut+oNkH73hxUcpgWmuJ+NPEqu5GbkLoQ==",
                             "keyMaterialType": "ASYMMETRIC_PRIVATE"
                         },
                         "status": "ENABLED",
-                        "keyId": 405658073,
-                        "outputPrefixType": "RAW"
+                        "keyId": 418995680,
+                        "outputPrefixType": "TINK"
                     },
                     {
                         "keyData": {
-                            "typeUrl": "type.googleapis.com/google.crypto.tink.HpkePrivateKey",
-                            "value": "GiAnd0VLE8exo149gJ49nkifg03YQLNnRMKfna0AdfYjnBIqGiABOUjRp8FQgppUbZlHCkxRgxGc3jYiChCkm+pf9BL3YhIGGAIQAQgB",
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPrivateKey",
+                            "value": "EowBEkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARohAMJtGycPgL1lcApnYiP3MbURUE5tkkOxdeiOUTxsclmLIiEA4aNiPurRhAnYMdpLS52MbOR+DWjxnvzOgRUPUTnYOeYaIH8YV8/5mBhN2GVpnHIWEYUKEpqcM6t+ZhGC5UJ1ZbYU",
                             "keyMaterialType": "ASYMMETRIC_PRIVATE"
                         },
                         "status": "ENABLED",
-                        "keyId": 2085058073,
-                        "outputPrefixType": "LEGACY"
+                        "keyId": 1013057693,
+                        "outputPrefixType": "TINK"
                     }
                 ]
             }
@@ -271,37 +271,37 @@ class HybridTest {
         // Keyset with the public keys of the keys from JSON_PRIVATE_KEYSET_WITH_MULTIPLE_KEYS.
         val JSON_PUBLIC_KEYSET_WITH_MULTIPLE_KEYS = """
             {
-                "primaryKeyId": 405658073,
+                "primaryKeyId": 1013057693,
                 "key": [
                     {
                         "keyData": {
-                            "typeUrl": "type.googleapis.com/google.crypto.tink.HpkePublicKey",
-                            "value": "GiCwWh0y63GfObeWuYZcuLIiFz+15ElOFL7rhf9rbWxdBBIGGAEQAQgB",
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPublicKey",
+                            "value": "EkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARogI4P/E3HzF6GSRNM4XlRwKBjGw81REj8ovlBno2uNvc8iIQC7Zjep7K4nPGJljgg6GCOrovBJcJRGWMsg8XLDTh0Cdw==",
                             "keyMaterialType": "ASYMMETRIC_PUBLIC"
                         },
                         "status": "ENABLED",
-                        "keyId": 1885000158,
+                        "keyId": 647048814,
                         "outputPrefixType": "TINK"
                     },
                     {
                         "keyData": {
                             "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPublicKey",
-                            "value": "IiAkMXx9w3INLoFyBil5U+Qnb9kEb4y6bfQ4h3gPgLMO5Bog/0naqjjztKGv4zEwiQTdW8yujWvhn5UWhM/dBZVOnOISXBgBElISUBgBEhISCBAgCgQQEAgDCgYQEAoCCBAKOHR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmNyeXB0by50aW5rLkFlc0N0ckhtYWNBZWFkS2V5CgQQAwgC",
+                            "value": "EkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARogYDMh2pw+/IEZ5OTcWsnl3k8QunjsB1spu2Ex71L82WEiIECb/Un5ANDbIFdOpf+fxK0DJiTno1XVKuJym1WCqZTz",
                             "keyMaterialType": "ASYMMETRIC_PUBLIC"
                         },
                         "status": "ENABLED",
-                        "keyId": 405658073,
-                        "outputPrefixType": "RAW"
+                        "keyId": 418995680,
+                        "outputPrefixType": "TINK"
                     },
                     {
                         "keyData": {
-                            "typeUrl": "type.googleapis.com/google.crypto.tink.HpkePublicKey",
-                            "value": "GiABOUjRp8FQgppUbZlHCkxRgxGc3jYiChCkm+pf9BL3YhIGGAIQAQgB",
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.EciesAeadHkdfPublicKey",
+                            "value": "EkQKBAgCEAMSOhI4CjB0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5jcnlwdG8udGluay5BZXNHY21LZXkSAhAQGAEYARohAMJtGycPgL1lcApnYiP3MbURUE5tkkOxdeiOUTxsclmLIiEA4aNiPurRhAnYMdpLS52MbOR+DWjxnvzOgRUPUTnYOeY=",
                             "keyMaterialType": "ASYMMETRIC_PUBLIC"
                         },
                         "status": "ENABLED",
-                        "keyId": 2085058073,
-                        "outputPrefixType": "LEGACY"
+                        "keyId": 1013057693,
+                        "outputPrefixType": "TINK"
                     }
                 ]
             }
