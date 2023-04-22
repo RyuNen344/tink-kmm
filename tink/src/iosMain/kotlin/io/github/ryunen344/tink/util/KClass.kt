@@ -9,23 +9,23 @@ import io.github.ryunen344.tink.signature.PublicKeySign
 import io.github.ryunen344.tink.signature.PublicKeyVerify
 import kotlin.reflect.KClass
 
-val Aead.kclass: KClass<Aead>
+val aead: KClass<Aead>
     get() = Aead::class
 
-val DeterministicAead.kclass: KClass<DeterministicAead>
+val deterministicAead: KClass<DeterministicAead>
     get() = DeterministicAead::class
 
-val HybridDecrypt.kclass: KClass<HybridDecrypt>
+val hybridDecrypt: KClass<HybridDecrypt>
     get() = HybridDecrypt::class
 
-val HybridEncrypt.kclass: KClass<HybridEncrypt>
+val hybridEncrypt: KClass<HybridEncrypt>
     get() = HybridEncrypt::class
 
-val Mac.kclass: KClass<Mac>
+val mac: KClass<Mac>
     get() = Mac::class
 
-val PublicKeySign.kclass: KClass<PublicKeySign>
+val publicKeySign: KClass<PublicKeySign>
     get() = PublicKeySign::class
 
-val PublicKeyVerify.kclass: KClass<PublicKeyVerify>
+val publicKeyVerify: KClass<PublicKeyVerify>
     get() = PublicKeyVerify::class
