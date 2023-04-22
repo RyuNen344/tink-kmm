@@ -116,22 +116,88 @@ class DeterministicAeadTest {
         assertContentEquals(plaintext, decrypted)
     }
 
+    @Test
+    fun test_encrypt_given_multiple_keyset_then_success() {
+        val plaintext: ByteArray = "plaintext".encodeToByteArray()
+        val associatedData: ByteArray = "associatedData".encodeToByteArray()
+
+        val primaryHandle = KeysetHandleGenerator.readClearText(JsonKeysetReader(JSON_DAEAD_KEYSET_WITH_MULTIPLE_KEYS))
+        val primaryDaead = primaryHandle.getPrimitive(DeterministicAead::class)
+        assertContentEquals(
+            plaintext,
+            primaryDaead.decryptDeterministically(
+                primaryDaead.encryptDeterministically(plaintext, associatedData),
+                associatedData
+            )
+        )
+
+        // Also test that daead can decrypt ciphertexts encrypted with a non-primary key. We use
+        // JSON_DAEAD_KEYSET to encrypt with the first key.
+        val subHandle = KeysetHandleGenerator.readClearText(JsonKeysetReader(JSON_DAEAD_KEYSET))
+        val subDaead = subHandle.getPrimitive(DeterministicAead::class)
+        assertContentEquals(
+            plaintext,
+            subDaead.decryptDeterministically(
+                subDaead.encryptDeterministically(plaintext, associatedData),
+                associatedData
+            )
+        )
+    }
+
     private companion object {
         val JSON_DAEAD_KEYSET = """
             {
-              "primaryKeyId": 961932622,
-              "key": [
-                {
-                  "keyData": {
-                    "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
-                    "keyMaterialType": "SYMMETRIC",
-                    "value": "EkCJ9r5iwc5uxq5ugFyrHXh5dijTa7qalWUgZ8Gf08RxNd545FjtLMYL7ObcaFtCSkvV2+7u6F2DN+kqUjAfkf2W"
-                  },
-                  "outputPrefixType": "TINK",
-                  "keyId": 961932622,
-                  "status": "ENABLED"
-                }
-              ]
+                "primaryKeyId": 961932622,
+                "key": [
+                    {
+                        "keyData": {
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
+                            "keyMaterialType": "SYMMETRIC",
+                            "value": "EkCJ9r5iwc5uxq5ugFyrHXh5dijTa7qalWUgZ8Gf08RxNd545FjtLMYL7ObcaFtCSkvV2+7u6F2DN+kqUjAfkf2W"
+                        },
+                        "outputPrefixType": "TINK",
+                        "keyId": 961932622,
+                        "status": "ENABLED"
+                    }
+                ]
+            }
+        """.trimIndent()
+
+        val JSON_DAEAD_KEYSET_WITH_MULTIPLE_KEYS = """
+            {
+                "primaryKeyId": 385749617,
+                "key": [
+                    {
+                        "keyData": {
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
+                            "keyMaterialType": "SYMMETRIC",
+                            "value": "EkCJ9r5iwc5uxq5ugFyrHXh5dijTa7qalWUgZ8Gf08RxNd545FjtLMYL7ObcaFtCSkvV2+7u6F2DN+kqUjAfkf2W"
+                        },
+                        "outputPrefixType": "TINK",
+                        "keyId": 961932622,
+                        "status": "ENABLED"
+                    },
+                    {
+                        "keyData": {
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
+                            "value": "EkCGjyLCW8IOilSjFtkBOvpQoOA8ZsCAsFnCawU9ySiii3KefQkY4pGZcdlwJypOZem1/L+wPthYeCo4xmdq68hl",
+                            "keyMaterialType": "SYMMETRIC"
+                        },
+                        "status": "ENABLED",
+                        "keyId": 385749617,
+                        "outputPrefixType": "RAW"
+                    },
+                    {
+                        "keyData": {
+                            "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
+                            "value": "EkCCo6EJBokVl3uTcZMA5iCtQArJliOlBBBfjmZ+IHdLGCatgWJ/tsUi2cmpw0o3yXyJaJbyT06kUCEP+GvFIjCQ",
+                            "keyMaterialType": "SYMMETRIC"
+                        },
+                        "status": "ENABLED",
+                        "keyId": 919668303,
+                        "outputPrefixType": "LEGACY"
+                    }
+                ]
             }
         """.trimIndent()
     }
