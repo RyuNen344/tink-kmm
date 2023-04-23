@@ -13,7 +13,16 @@ import kotlinx.cinterop.value
 
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(keyTemplate = keyTemplate, error = it.ptr) },
+    block = {
+        runCatching {
+            KeysetHandle(keyTemplate = keyTemplate, error = it.ptr)
+        }.getOrElse {
+            throw GeneralSecurityException(
+                message = "No manager for type ${keyTemplate.description} has been registered.",
+                cause = it
+            )
+        }
+    },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
@@ -22,7 +31,16 @@ actual fun KeysetHandleGenerator.Companion.read(
     reader: KeysetReader,
     aead: Aead,
 ): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(keysetReader = reader.native, andKey = (aead as DarwinAead).native, error = it.ptr) },
+    block = {
+        runCatching {
+            KeysetHandle(keysetReader = reader.native, andKey = (aead as DarwinAead).native, error = it.ptr)
+        }.getOrElse {
+            throw GeneralSecurityException(
+                message = "No manager has been registered.",
+                cause = it
+            )
+        }
+    },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
@@ -30,13 +48,25 @@ actual fun KeysetHandleGenerator.Companion.read(
 actual fun KeysetHandleGenerator.Companion.readClearText(reader: KeysetReader): KeysetHandle = memScopedInstance(
     block = {
         TINKKeysetHandle.create(cleartextKeysetHandleWithKeysetReader = reader.native, error = it.ptr)
-            ?: throw GeneralSecurityException(cause = it.value?.asThrowable())
+            ?: throw GeneralSecurityException(
+                message = "No manager has been registered.",
+                cause = it.value?.asThrowable()
+            )
     },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.readNoSecret(keyset: ByteArray): KeysetHandle = memScopedInstance(
-    block = { KeysetHandle(noSecretKeyset = keyset.toNSData(), error = it.ptr) },
+    block = {
+        runCatching {
+            KeysetHandle(noSecretKeyset = keyset.toNSData(), error = it.ptr)
+        }.getOrElse {
+            throw GeneralSecurityException(
+                message = "No manager has been registered.",
+                cause = it
+            )
+        }
+    },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
