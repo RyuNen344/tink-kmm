@@ -15,8 +15,10 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:
+          default-branch: main
           release-type: simple
           package-name: release-please-action
           include-v-in-tag: false
+          tag-separator: false
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
