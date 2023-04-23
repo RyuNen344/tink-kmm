@@ -1,8 +1,7 @@
 {
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "release-type": "simple",
-  "default-branch": "main",
   "include-v-in-tag": false,
-  "tag-separator": false,
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
   "release-as": "0.0.1"
