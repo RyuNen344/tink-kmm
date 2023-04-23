@@ -14,5 +14,5 @@ internal inline fun <T> memScopedInstance(
     val error = alloc<ObjCObjectVar<NSError?>>()
     val instance = block(error)
     error.value?.let(onError)
-    instance
+    requireNotNull(instance)
 }

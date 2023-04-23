@@ -1,4 +1,4 @@
-package io.github.ryunen344.tink.util
+package io.github.ryunen344.tink
 
 import io.github.ryunen344.tink.aead.Aead
 import io.github.ryunen344.tink.daead.DeterministicAead
