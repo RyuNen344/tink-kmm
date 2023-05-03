@@ -1,11 +1,12 @@
 package io.github.ryunen344.tink
 
-import com.google.crypto.tink.BinaryKeysetWriter
+import com.google.crypto.tink.CleartextKeysetHandle
 import io.github.ryunen344.tink.aead.Aead
 import io.github.ryunen344.tink.aead.AndroidAead
 import io.github.ryunen344.tink.daead.AndroidDeterministicAead
 import io.github.ryunen344.tink.daead.DeterministicAead
 import io.github.ryunen344.tink.exception.GeneralSecurityException
+import io.github.ryunen344.tink.exception.IOException
 import io.github.ryunen344.tink.hybrid.AndroidHybridDecrypt
 import io.github.ryunen344.tink.hybrid.AndroidHybridEncrypt
 import io.github.ryunen344.tink.hybrid.HybridDecrypt
@@ -16,17 +17,16 @@ import io.github.ryunen344.tink.signature.AndroidPublicKeySign
 import io.github.ryunen344.tink.signature.AndroidPublicKeyVerify
 import io.github.ryunen344.tink.signature.PublicKeySign
 import io.github.ryunen344.tink.signature.PublicKeyVerify
-import java.io.ByteArrayOutputStream
 import kotlin.reflect.KClass
 
 actual typealias KeysetHandle = com.google.crypto.tink.KeysetHandle
 
-@Throws(GeneralSecurityException::class)
-actual fun KeysetHandle.writeNoSecret(): ByteArray =
-    ByteArrayOutputStream().use {
-        writeNoSecret(BinaryKeysetWriter.withOutputStream(it))
-        it.toByteArray()
-    }
+@Suppress("EXTENSION_SHADOWED_BY_MEMBER")
+@Throws(GeneralSecurityException::class, IOException::class)
+actual fun KeysetHandle.writeNoSecret(writer: KeysetWriter) = writeNoSecret(writer)
+
+@Throws(GeneralSecurityException::class, IOException::class)
+actual fun KeysetHandle.writeCleartext(writer: KeysetWriter) = CleartextKeysetHandle.write(this, writer)
 
 @Suppress("UNCHECKED_CAST")
 @Throws(GeneralSecurityException::class)
