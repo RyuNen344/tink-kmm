@@ -3,7 +3,6 @@ package io.github.ryunen344.tink
 import com.google.crypto.tink.CleartextKeysetHandle
 import io.github.ryunen344.tink.aead.Aead
 import io.github.ryunen344.tink.aead.AndroidAead
-import io.github.ryunen344.tink.aead.NativeAead
 import io.github.ryunen344.tink.daead.AndroidDeterministicAead
 import io.github.ryunen344.tink.daead.DeterministicAead
 import io.github.ryunen344.tink.exception.GeneralSecurityException
@@ -22,13 +21,7 @@ import kotlin.reflect.KClass
 
 actual typealias KeysetHandle = com.google.crypto.tink.KeysetHandle
 
-@Throws(GeneralSecurityException::class, IOException::class)
-actual fun KeysetHandle.write(writer: KeysetWriter, aead: Aead) = writeWithAssociatedData(writer, aead, ByteArray(0))
-
-@Throws(GeneralSecurityException::class, IOException::class)
-actual fun KeysetHandle.writeWithAssociatedData(writer: KeysetWriter, aead: Aead, associatedData: ByteArray) =
-    writeWithAssociatedData(writer, aead as NativeAead, associatedData)
-
+@Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 @Throws(GeneralSecurityException::class, IOException::class)
 actual fun KeysetHandle.writeNoSecret(writer: KeysetWriter) = writeNoSecret(writer)
 

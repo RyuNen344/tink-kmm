@@ -1,3 +1,3 @@
 package io.github.ryunen344.tink
 
-expect class BinaryKeysetWriter : KeysetWriter
+expect class BinaryKeysetWriter() : KeysetWriter

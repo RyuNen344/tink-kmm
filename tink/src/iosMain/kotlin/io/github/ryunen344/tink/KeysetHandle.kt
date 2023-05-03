@@ -19,7 +19,6 @@ import io.github.ryunen344.tink.signature.PublicKeySign
 import io.github.ryunen344.tink.signature.PublicKeyVerify
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
-import io.github.ryunen344.tink.util.toByteArray
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 import platform.Foundation.NSData
@@ -32,27 +31,14 @@ import kotlin.reflect.KClass
 actual typealias KeysetHandle = com.google.crypto.tink.TINKKeysetHandle
 
 @Throws(GeneralSecurityException::class, IOException::class)
-actual fun KeysetHandle.write(writer: KeysetWriter, aead: Aead) = writeWithAssociatedData(writer, aead, ByteArray(0))
-
-@Throws(GeneralSecurityException::class, IOException::class)
-actual fun KeysetHandle.writeWithAssociatedData(writer: KeysetWriter, aead: Aead, associatedData: ByteArray) {
-    writer.data = serializedKeyset()
-}
-
-@Throws(GeneralSecurityException::class, IOException::class)
 actual fun KeysetHandle.writeNoSecret(writer: KeysetWriter) = memScopedInstance(
-    block = { writer.data = serializedKeysetNoSecret(it.ptr) },
+    block = { writer.value = serializedKeysetNoSecret(it.ptr) },
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
 @Throws(GeneralSecurityException::class, IOException::class)
 actual fun KeysetHandle.writeCleartext(writer: KeysetWriter) {
-    val ret = serializedKeyset()
-
-    println("content ${ret.toByteArray().contentToString()}")
-    println("nsstring ${ret.toNSString()?.toKString()}")
-
-    writer.data = serializedKeyset()
+    writer.value = serializedKeyset()
 }
 
 @Suppress("CAST_NEVER_SUCCEEDS")
