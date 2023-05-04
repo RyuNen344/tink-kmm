@@ -122,6 +122,8 @@ GEM
     nap (1.1.0)
     netrc (0.11.0)
     no_proxy_fix (0.1.2)
+    nokogiri (1.14.3-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.14.3-x86_64-darwin)
       racc (~> 1.4)
     nokogiri-happymapper (0.9.0)
@@ -167,6 +169,7 @@ GEM
       rouge (~> 2.0.7)
 
 PLATFORMS
+  arm64-darwin-21
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
