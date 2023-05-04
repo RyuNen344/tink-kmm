@@ -1,9 +1,9 @@
 name: release
 
 on:
-  push:
+  create:
     tags:
-      - '**'
+      - "**"
 
 jobs:
   publish:
