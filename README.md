@@ -3,12 +3,11 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344/tink-common/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344/tink-common)
 [![test](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/RyuNen344/tink-kmm/branch/main/graph/badge.svg?token=21Z06YR92T)](https://codecov.io/gh/RyuNen344/tink-kmm)
-![badge][badge-android]
-![badge][badge-ios]
+![badge-android](http://img.shields.io/badge/-android-6EDB8D.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/-ios-CDCDCD.svg?style=flat)
+![badge-silicon](http://img.shields.io/badge/support-[AppleSilicon]-43BBFF.svg?style=flat)
 
 This is a repositoy of [Google/Tink](https://github.com/google/tink) Mapper for KMM(Kotlin Multiplatform Mobile)
-
-work in progress......
 
 ## Tink Primitives
 
