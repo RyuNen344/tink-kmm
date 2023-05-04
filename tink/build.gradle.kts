@@ -133,31 +133,29 @@ val localProperty = Properties().apply {
 }
 
 publishing {
-    publications {
-        register<MavenPublication>("release") {
-            pom {
-                name.set("Tink KMM")
-                description.set("Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project")
+    publications.withType<MavenPublication> {
+        pom {
+            name.set("Tink KMM")
+            description.set("Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project")
+            url.set("https://github.com/RyuNen344/tink-kmm")
+            licenses {
+                license {
+                    name.set("MIT")
+                    url.set("https://opensource.org/licenses/MIT")
+                    distribution.set("repo")
+                }
+            }
+            developers {
+                developer {
+                    id.set("RyuNen344")
+                    name.set("Bunjiro Miyoshi")
+                    email.set("s1100633@outlook.com")
+                }
+            }
+            scm {
+                connection.set("scm:git://github.com/RyuNen344/tink-kmm.git")
+                developerConnection.set("scm:git://github.com/RyuNen344/tink-kmm.git")
                 url.set("https://github.com/RyuNen344/tink-kmm")
-                licenses {
-                    license {
-                        name.set("MIT License")
-                        url.set("http://www.opensource.org/licenses/mit-license.php")
-                        distribution.set("repo")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("RyuNen344")
-                        name.set("Bunjiro Miyoshi")
-                        email.set("s1100633@outlook.com")
-                    }
-                }
-                scm {
-                    connection.set("scm:git://github.com/RyuNen344/tink-kmm.git")
-                    developerConnection.set("scm:git://github.com/RyuNen344/tink-kmm.git")
-                    url.set("https://github.com/RyuNen344/tink-kmm")
-                }
             }
         }
     }
@@ -167,7 +165,7 @@ publishing {
             setUrl("$rootDir/releases/maven")
         }
         maven {
-            name = "MavenCentral"
+            name = "sonatype"
             setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
                 username = localProperty.getProperty("sonatype.username") ?: System.getenv("SONATYPE_USERNAME")
