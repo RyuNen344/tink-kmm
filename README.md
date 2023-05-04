@@ -1,4 +1,8 @@
-# tink-kmm
+# Tink-KMM
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344/tink-common/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344/tink-common)
+[![test](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/RyuNen344/tink-kmm/branch/main/graph/badge.svg?token=21Z06YR92T)](https://codecov.io/gh/RyuNen344/tink-kmm)
 
 This is a repositoy of [Google/Tink](https://github.com/google/tink) Mapper for KMM(Kotlin Multiplatform Mobile)
 
