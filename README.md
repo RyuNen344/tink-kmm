@@ -8,10 +8,14 @@
 ![badge-ios](http://img.shields.io/badge/-ios-CDCDCD.svg?style=flat)
 ![badge-silicon](http://img.shields.io/badge/support-[AppleSilicon]-43BBFF.svg?style=flat)
 
-This is a repositoy of [Google/Tink](https://github.com/google/tink) Mapper for KMM(Kotlin Multiplatform Mobile)
-This wrapper library allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project.
+This is a repositoy of [Google/Tink](https://github.com/google/tink) Mapper for KMM(Kotlin Multiplatform Mobile)<br>
+This wrapper library allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project.<br>
 
 ## Why this library?
+
+KMM currently does not have a Crypto Library that can be used as a de facto standard.<br>
+Of course, we can implement encryption using the expect/actual modifier.<br>
+But, CCCrypto has a limitation of supported algorithm.(e.g, it can not be use AES-GCM)<br>
 
 ## Tink Primitives
 
@@ -154,6 +158,51 @@ KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template())
 > Defined available key templates in [KeyTemplateSet](tink/src/commonMain/kotlin/io/github/ryunen344/tink/KeyTemplateSet.kt)
 
 ### Serialize and Deserialize
+
+#### Serialize with KeysetWriter
+
+##### Cleartext
+
+```kotlin:SerializeCleartext.kt
+val writer = BinaryKeysetWriter()
+
+// 1. write keyset to writer
+handle.writeCleartext(writer)
+
+// 2. get ByteArray from writer and save serialized somewhere
+val serialized = writer.write()
+```
+
+##### NoSecret
+
+```kotlin:SerializeNoSecret.kt
+val writer = BinaryKeysetWriter()
+
+// 1. write keyset to writer
+handle.writeNoSecret(writer)
+
+// 2. get ByteArray from writer(if keyset has secret key, throw exception)
+val serialized = writer.write()
+```
+
+#### Deserialize with KeysetReader
+
+##### Binary
+
+```kotlin:Deserialize.kt
+// read with AEAD
+val masterKey: AEAD
+KeysetHandleGenerator.read(serialized, masterKey)
+
+// read ByteArray from somewhere
+KeysetHandleGenerator.readClearText(BinaryKeysetReader(serialized))
+
+// read json string from somewhere
+KeysetHandleGenerator.readClearText(JsonKeysetReader("json string"))
+
+// read ByteArray with secret key from somewhere
+KeysetHandleGenerator.readNoSecret(serialized)
+```
 
 ### Obtaining and using primitives
 
