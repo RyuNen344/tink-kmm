@@ -111,16 +111,21 @@ kotlin {
 
 ## Usage
 
--   you can use Tink-KMM like java Tink.
+you can use Tink-KMM like java Tink.
 
 ### Initialization
 
 ```kotlin
 import io.github.ryunen344.tink.aead.AeadConfig
+import io.github.ryunen344.tink.aead.register
 import io.github.ryunen344.tink.daead.DeterministicAeadConfig
+import io.github.ryunen344.tink.daead.register
 import io.github.ryunen344.tink.hybrid.HybridConfig
+import io.github.ryunen344.tink.hybrid.register
 import io.github.ryunen344.tink.mac.MacConfig
+import io.github.ryunen344.tink.mac.register
 import io.github.ryunen344.tink.signature.SignatureConfig
+import io.github.ryunen344.tink.signature.register
 
 AeadConfig.register()
 DeterministicAeadConfig.register()
