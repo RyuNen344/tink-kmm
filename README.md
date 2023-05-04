@@ -71,6 +71,14 @@ This wrapper library allows you to use Tink Primitive Encryption in your Kotlin 
 | ----------- | :--------: | :--------------: | :-----------: |
 | 0.0.1       |   1.8.20   |      1.7.0       |     1.7.0     |
 
+
+> **Warning**
+> Tink-ObjC 1.7.0 has not been released to CocoaPods yet.
+> https://github.com/google/tink/issues/583
+> https://github.com/google/tink/issues/641
+> so, you need to build Tink-ObjC 1.7.0 by yourself.
+> you can use my folk [RyuNen344/tink](https://github.com/RyuNen344/tink), and [Makefile](Makefile) can be used as a reference about how to build Tink-ObjC 1.7.0.
+
 ## Installation
 
 add the following to your `settings.gradle` and `build.gradle` file:
@@ -265,4 +273,16 @@ val signature = signer.sign(message)
 
 // ... or to verify a signature.
 verifier.verify(signature, message)
+```
+
+#### Swift(Optional)
+This library also supports be used in Swift directory.
+
+```swift
+try! AeadConfig.companion.register()
+let template = try! KeyTemplateSet.aes256Gcm.template()
+let handle = try! KeysetHandleGenerator.companion.generateNew(keyTemplate: template)
+let aead = try! KeysetHandleKt.getPrimitive(handle, kClass: TinkPrimitiveKt.aead) as! Aead
+let ciphertext = try! aead.encrypt(plaintext, with: associatedData)
+let decrypted = try! aead.decrypt(ciphertext, with: associatedData)
 ```
