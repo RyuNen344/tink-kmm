@@ -110,3 +110,126 @@ kotlin {
 ```
 
 ## Usage
+
+-   you can use Tink-KMM like java Tink.
+
+### Initialization
+
+```kotlin
+import io.github.ryunen344.tink.aead.AeadConfig
+import io.github.ryunen344.tink.daead.DeterministicAeadConfig
+import io.github.ryunen344.tink.hybrid.HybridConfig
+import io.github.ryunen344.tink.mac.MacConfig
+import io.github.ryunen344.tink.signature.SignatureConfig
+
+AeadConfig.register()
+DeterministicAeadConfig.register()
+HybridConfig.register()
+MacConfig.register()
+SignatureConfig.register()
+```
+
+### Generate new keys and keysets
+
+```kotlin
+import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
+import io.github.ryunen344.tink.generateNew
+
+KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template())
+```
+
+### Serialize and Deserialize
+
+### Obtaining and using primitives
+
+#### AEAD
+
+```kotlin:Aead.kt
+import io.github.ryunen344.tink.aead.Aead
+import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
+import io.github.ryunen344.tink.generateNew
+import io.github.ryunen344.tink.getPrimitive
+
+// 1. Generate the key material.
+val handle = KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template())
+
+// 2. Get the primitive.
+val aead = handle.getPrimitive(Aead::class)
+
+// 3. Use the primitive to encrypt a plaintext,
+val ciphertext = aead.encrypt(plaintext, associatedData)
+
+// ... or to decrypt a ciphertext.
+val decrypted = aead.decrypt(ciphertext, associatedData)
+```
+
+#### DeterministicAEAD
+
+```kotlin:DeterministicAead.kt
+import io.github.ryunen344.tink.daead.DeterministicAead
+import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
+import io.github.ryunen344.tink.generateNew
+import io.github.ryunen344.tink.getPrimitive
+
+// 1. Generate the key material.
+val handle = KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template())
+
+// 2. Get the primitive.
+val daead = handle.getPrimitive(DeterministicAead::class)
+
+// 3. Use the primitive to encrypt a plaintext,
+val ciphertext = daead.encrypt(plaintext, associatedData)
+
+// ... or to decrypt a ciphertext.
+val decrypted = daead.decrypt(ciphertext, associatedData)
+```
+
+#### MAC
+
+```kotlin:Mac.kt
+import io.github.ryunen344.tink.mac.Mac
+import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
+import io.github.ryunen344.tink.generateNew
+import io.github.ryunen344.tink.getPrimitive
+
+// 1. Generate the key material.
+val handle = KeysetHandleGenerator.generateNew(KeyTemplateSet.HMAC_SHA256_128BITTAG.template())
+
+// 2. Get the primitive.
+val mac = handle.getPrimitive(Mac::class)
+
+// 3. Use the primitive to compute a tag.
+val tag = mac.computeMac(plaintext)
+
+// ... or to verify a tag.
+mac.verifyMac(tag, plaintext)
+```
+
+#### Signature
+
+```kotlin:Signature.kt
+import io.github.ryunen344.tink.signature.PublicKeySign
+import io.github.ryunen344.tink.signature.PublicKeyVerify
+import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
+import io.github.ryunen344.tink.generateNew
+import io.github.ryunen344.tink.getPrimitive
+
+// 1. Generate the key material.
+val privateHandle = KeysetHandleGenerator.generateNew(KeyTemplateSet.ECDSA_P256.template())
+val publicHandle = privateHandle.publicKeysetHandle()
+
+// 2. Get the primitive.
+val signer = privateHandle.getPrimitive(PublicKeySign::class)
+val verifier = publicHandle.getPrimitive(PublicKeyVerify::class)
+
+// 3. Use the primitive to sign a message.
+val signature = signer.sign(message)
+
+// ... or to verify a signature.
+verifier.verify(signature, message)
+```
