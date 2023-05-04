@@ -78,7 +78,7 @@ This wrapper library allows you to use Tink Primitive Encryption in your Kotlin 
 > https://github.com/google/tink/issues/583</br>
 > https://github.com/google/tink/issues/641</br>
 > so, you need to build Tink-ObjC 1.7.0 by yourself.</br>
-> you can use my folk [RyuNen344/tink](https://github.com/RyuNen344/tink), and [Makefile](Makefile) can be used as a reference about how to build Tink-ObjC 1.7.0.</br>
+> you can use my fork [RyuNen344/tink](https://github.com/RyuNen344/tink), and [Makefile](Makefile) can be used as a reference about how to build Tink-ObjC 1.7.0.</br>
 
 ## Installation
 
