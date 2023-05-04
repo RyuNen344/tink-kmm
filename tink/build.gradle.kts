@@ -182,4 +182,5 @@ signing {
     val secretKey = localProperty.getProperty("pgp.signing_key") ?: System.getenv("PGP_SIGNING_KEY")
     val password = localProperty.getProperty("pgp.signing_password") ?: System.getenv("PGP_SIGNING_PASSWORD")
     useInMemoryPgpKeys(keyId, secretKey, password)
+    sign(publishing.publications)
 }
