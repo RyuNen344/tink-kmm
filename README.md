@@ -8,6 +8,7 @@
 ![badge-silicon](http://img.shields.io/badge/support-[AppleSilicon]-43BBFF.svg?style=flat)
 
 This is a repositoy of [Google/Tink](https://github.com/google/tink) Mapper for KMM(Kotlin Multiplatform Mobile)
+This wrapper library allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project.
 
 ## Tink Primitives
 
@@ -21,9 +22,9 @@ This is a repositoy of [Google/Tink](https://github.com/google/tink) Mapper for 
 | Hybrid encryption                                   | HybridEncrypt, HybridDecrypt   |
 | Digital signatures                                  | PublicKeySign, PublicKeyVerify |
 
-## Supported primitives and their implementations
+### Supported primitives and their implementations
 
-### Primitives supported by language
+#### Primitives supported by language
 
 **Primitive**      | **Java** | **Objective-C** | **Tink-KMM** |
 ------------------ |:--------:|:---------------:|:------------:|
@@ -35,7 +36,7 @@ PRF                |   yes    |     **no**      |    **no**    |
 Digital signatures |   yes    |       yes       |     yes      |
 Hybrid encryption  |   yes    |       yes       |     yes      |
 
-### Primitive implementations supported by language
+#### Primitive implementations supported by language
 
 | **Primitive**       | **Implementation**                    | **Java** | **Objective-C** | **Tink-KMM** |
 | ------------------- |---------------------------------------|:--------:|:---------------:|:------------:|
@@ -61,3 +62,6 @@ Hybrid encryption  |   yes    |       yes       |     yes      |
 | Hybrid Encryption   | HPKE                                  |   yes    |     **no**      |    **no**    |
 |                     | ECIES with AEAD and HKDF              |   yes    |       yes       |      yes     |
 |                     | ECIES with DeterministicAEAD and HKDF |   yes    |     **no**      |    **no**    |
+
+
+## Installation
