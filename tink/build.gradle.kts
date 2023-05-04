@@ -2,11 +2,13 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 import org.jetbrains.kotlin.konan.target.KonanTarget
+import java.util.Properties
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("maven-publish")
+    id("signing")
     id("jacoco")
 }
 
@@ -124,11 +126,61 @@ fun Project.tinkLinkerOption(target: KonanTarget): List<String> {
     )
 }
 
+val localProperty = Properties().apply {
+    File(rootDir, "local.properties").takeIf { it.exists() }?.run {
+        load(inputStream())
+    }
+}
+
 publishing {
+    publications {
+        register<MavenPublication>("release") {
+            pom {
+                name.set("Tink KMM")
+                description.set("Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project")
+                url.set("https://github.com/RyuNen344/tink-kmm")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("http://www.opensource.org/licenses/mit-license.php")
+                        distribution.set("repo")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("RyuNen344")
+                        name.set("Bunjiro Miyoshi")
+                        email.set("s1100633@outlook.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git://github.com/RyuNen344/tink-kmm.git")
+                    developerConnection.set("scm:git://github.com/RyuNen344/tink-kmm.git")
+                    url.set("https://github.com/RyuNen344/tink-kmm")
+                }
+            }
+        }
+    }
     repositories {
         maven {
             name = "Local"
             setUrl("$rootDir/releases/maven")
         }
+        maven {
+            name = "MavenCentral"
+            setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = localProperty.getProperty("sonatype.username") ?: System.getenv("SONATYPE_USERNAME")
+                password = localProperty.getProperty("sonatype.password") ?: System.getenv("SONATYPE_PASSWORD")
+            }
+        }
     }
+}
+
+signing {
+    val keyId = localProperty.getProperty("pgp.key_id") ?: System.getenv("PGP_KEY_ID")
+    val secretKey = localProperty.getProperty("pgp.signing_key") ?: System.getenv("PGP_SIGNING_KEY")
+    val password = localProperty.getProperty("pgp.signing_password") ?: System.getenv("PGP_SIGNING_PASSWORD")
+    useInMemoryPgpKeys(keyId, secretKey, password)
+    sign(publishing.publications)
 }
