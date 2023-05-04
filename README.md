@@ -1,6 +1,7 @@
 # Tink-KMM
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344.tink/tink-common/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344/tink-common)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![test](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/RyuNen344/tink-kmm/branch/main/graph/badge.svg?token=21Z06YR92T)](https://codecov.io/gh/RyuNen344/tink-kmm)
 ![badge-android](http://img.shields.io/badge/-android-6EDB8D.svg?style=flat)
@@ -73,11 +74,11 @@ This wrapper library allows you to use Tink Primitive Encryption in your Kotlin 
 
 
 > **Warning**
-> Tink-ObjC 1.7.0 has not been released to CocoaPods yet.
-> https://github.com/google/tink/issues/583
-> https://github.com/google/tink/issues/641
-> so, you need to build Tink-ObjC 1.7.0 by yourself.
-> you can use my folk [RyuNen344/tink](https://github.com/RyuNen344/tink), and [Makefile](Makefile) can be used as a reference about how to build Tink-ObjC 1.7.0.
+> Tink-ObjC 1.7.0 has not been released to CocoaPods yet.</br>
+> https://github.com/google/tink/issues/583</br>
+> https://github.com/google/tink/issues/641</br>
+> so, you need to build Tink-ObjC 1.7.0 by yourself.</br>
+> you can use my folk [RyuNen344/tink](https://github.com/RyuNen344/tink), and [Makefile](Makefile) can be used as a reference about how to build Tink-ObjC 1.7.0.</br>
 
 ## Installation
 
