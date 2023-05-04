@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.1-rc03](https://github.com/RyuNen344/tink-kmm/compare/0.0.1-rc02...0.0.1-rc03) (2023-05-04)
+
+
+### Bug Fixes
+
+* invalid pom file ([e8c611b](https://github.com/RyuNen344/tink-kmm/commit/e8c611b175961306791c6be01fe8a0a23f437194))
+
+
+### Miscellaneous Chores
+
+* release 0.0.1-rc03 ([89acd48](https://github.com/RyuNen344/tink-kmm/commit/89acd48b3cbf876095a921929d44884d53531d56))
+
 ## [0.0.1-rc02](https://github.com/RyuNen344/tink-kmm/compare/0.0.1-rc01...0.0.1-rc02) (2023-05-04)
 
 
