@@ -139,6 +139,9 @@ import io.github.ryunen344.tink.generateNew
 KeysetHandleGenerator.generateNew(KeyTemplateSet.AES256_GCM.template())
 ```
 
+> **Note**
+> Defined available key templates in [KeyTemplateSet](tink/src/commonMain/kotlin/io/github/ryunen344/tink/KeyTemplateSet.kt)
+
 ### Serialize and Deserialize
 
 ### Obtaining and using primitives
