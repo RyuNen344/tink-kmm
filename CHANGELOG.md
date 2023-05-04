@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.1](https://github.com/RyuNen344/tink-kmm/compare/0.0.1-rc03...0.0.1) (2023-05-04)
+
+
+### Miscellaneous Chores
+
+* release 0.0.1 ([95becd9](https://github.com/RyuNen344/tink-kmm/commit/95becd950744b13d406598060b2bc09106f6c48a))
+
 ## [0.0.1-rc03](https://github.com/RyuNen344/tink-kmm/compare/0.0.1-rc02...0.0.1-rc03) (2023-05-04)
 
 
