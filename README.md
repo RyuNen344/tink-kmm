@@ -1,6 +1,6 @@
 # Tink-KMM
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344.tink/tink/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344.tink/tink)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344.tink/tink/badge.svg?style=plastic&gav=true)](https://maven-badges.herokuapp.com/maven-central/io.github.ryunen344.tink/tink)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![test](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/RyuNen344/tink-kmm/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/RyuNen344/tink-kmm/branch/main/graph/badge.svg?token=21Z06YR92T)](https://codecov.io/gh/RyuNen344/tink-kmm)
