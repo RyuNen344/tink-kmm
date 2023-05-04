@@ -187,6 +187,30 @@ val ciphertext = daead.encrypt(plaintext, associatedData)
 val decrypted = daead.decrypt(ciphertext, associatedData)
 ```
 
+#### HybridAEAD
+
+```kotlin:HybridAead.kt
+import io.github.ryunen344.tink.hybrid.HybridEncrypt
+import io.github.ryunen344.tink.hybrid.HybridDecrypt
+import io.github.ryunen344.tink.KeyTemplateSet
+import io.github.ryunen344.tink.KeysetHandleGenerator
+import io.github.ryunen344.tink.generateNew
+import io.github.ryunen344.tink.getPrimitive
+import io.github.ryunen344.tink.publicKeysetHandle
+
+// 1. Generate the key material.
+val privateKeysetHandle = KeysetHandleGenerator.generateNew(KeyTemplateSet.ECIES_P256_HKDF_HMAC_SHA256_AES128_GCM.template())
+val publicKeysetHandle = privateKeysetHandle.publicKeysetHandle()
+
+// 2. Get the primitives.
+val hybridEncrypt = publicKeysetHandle.getPrimitive(HybridEncrypt::class)
+val hybridDecrypt = privateKeysetHandle.getPrimitive(HybridDecrypt::class)
+
+// 3. Use the primitives to encrypt and decrypt.
+val ciphertext = hybridEncrypt.encrypt(plaintext, contextInfo)
+val decrypted = hybridDecrypt.decrypt(ciphertext, contextInfo)
+```
+
 #### MAC
 
 ```kotlin:Mac.kt
@@ -218,6 +242,7 @@ import io.github.ryunen344.tink.KeyTemplateSet
 import io.github.ryunen344.tink.KeysetHandleGenerator
 import io.github.ryunen344.tink.generateNew
 import io.github.ryunen344.tink.getPrimitive
+import io.github.ryunen344.tink.publicKeysetHandle
 
 // 1. Generate the key material.
 val privateHandle = KeysetHandleGenerator.generateNew(KeyTemplateSet.ECDSA_P256.template())
