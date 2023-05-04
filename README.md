@@ -73,7 +73,7 @@ This wrapper library allows you to use Tink Primitive Encryption in your Kotlin 
 | 0.0.1       |   1.8.20   |      1.7.0       |     1.7.0     |
 
 
-> **Warning**
+> **Warning**</br>
 > Tink-ObjC 1.7.0 has not been released to CocoaPods yet.</br>
 > https://github.com/google/tink/issues/583</br>
 > https://github.com/google/tink/issues/641</br>
