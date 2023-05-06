@@ -1,0 +1,25 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:base"
+  ],
+  packageRules: [
+    {
+      groupName: "gh-actions",
+      prPriority: -1,
+      matchManagers: [
+        "github-actions"
+      ],
+      matchDatasources: [
+        "github-tags"
+      ],
+      matchUpdateTypes: [
+        "minor",
+        "patch"
+      ],
+      automerge: true,
+      platformAutomerge: true,
+      pinDigests: true,
+    },
+  ],
+}
