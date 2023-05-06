@@ -4,5 +4,5 @@ install! 'cocoapods', integrate_targets: false
 use_frameworks!
 
 target 'Tink' do
-  pod 'Tink'
+  pod 'Tink', '1.6.1'
 end
