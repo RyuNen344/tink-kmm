@@ -33,10 +33,10 @@ jobs:
       - uses: reviewdog/action-setup@v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
-      - uses: gradle/gradle-build-action@v2
+      - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
           arguments: lint
-      - uses: gradle/gradle-build-action@v2
+      - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
           arguments: detekt
       - uses: yutailang0119/action-android-lint@v3
