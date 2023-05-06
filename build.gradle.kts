@@ -15,7 +15,7 @@ plugins {
 
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0-RC1")
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-rules-libraries:1.23.0-RC1")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-rules-libraries:1.23.0-RC3")
 }
 
 detekt {
