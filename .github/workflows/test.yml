@@ -51,7 +51,12 @@ jobs:
             build/bazel
             Framework/Tink.xcframework
           key: v2-bazel-${{ runner.os }}-${{ hashFiles('.git/modules/TinkStub/HEAD') }}
+      - uses: andstor/file-existence-action@20b4d2e596410855db8f9ca21e96fbe18e12930b # v2
+        id: framework
+        with:
+          files: "Framework/Tink.xcframework"
       - run: make archive
+        if: steps.framework.outputs.files_exists != 'true'
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
           arguments: iosX64Test
