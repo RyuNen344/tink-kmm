@@ -6,6 +6,7 @@
 ### Miscellaneous Chores
 
 * release 0.0.2 ([2c0d0aa](https://github.com/RyuNen344/tink-kmm/commit/2c0d0aa7d481e5746612035d2b5cd8218090d387))
+* update kotlin to 1.8.21
 
 ## [0.0.1](https://github.com/RyuNen344/tink-kmm/compare/0.0.1-rc03...0.0.1) (2023-05-04)
 
