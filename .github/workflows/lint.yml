@@ -35,10 +35,12 @@ jobs:
       - uses: ./.github/actions/konan
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
-          arguments: lint
+          gradle-home-cache-cleanup: true
+          arguments: lint --scan
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
-          arguments: detekt
+          gradle-home-cache-cleanup: true
+          arguments: detekt --scan
       - uses: yutailang0119/action-android-lint@17fff6880e4c64c94073ac8c4fb9f2611e9fa5a0 # v3
         with:
           report-path: "**/build/reports/lint-results*.xml"
