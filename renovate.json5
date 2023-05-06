@@ -9,6 +9,15 @@
   "automergeStrategy": "squash",
   packageRules: [
     {
+      "groupName": "android gradle plugin",
+      "matchPackageNames": [
+        "com.android.application",
+        "com.android.library",
+        "com.android.settings",
+        "com.android.tools.build:gradle"
+      ],
+    },
+    {
       "groupName": "detekt",
       "matchPackagePatterns": [
         "^io\\.gitlab\\.arturbosch.detekt"
