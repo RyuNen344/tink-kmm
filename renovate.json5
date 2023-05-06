@@ -5,10 +5,11 @@
     // https://github.com/whitesource/merge-confidence
     "github>whitesource/merge-confidence:beta"
   ],
+  // https://docs.renovatebot.com/configuration-options/#automergestrategy
+  "automergeStrategy": "squash",
   packageRules: [
     {
       groupName: "gh-actions",
-      prPriority: -1,
       matchManagers: [
         "github-actions"
       ],
