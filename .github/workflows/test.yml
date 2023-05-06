@@ -20,9 +20,11 @@ jobs:
       - uses: ./.github/actions/konan
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
-          arguments: testDebugUnitTest
+          gradle-home-cache-cleanup: true
+          arguments: testDebugUnitTest --scan
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
+          gradle-home-cache-cleanup: true
           arguments: jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@4e7013f9576bd22ffdae979dc6e68cb9ec2aeece # v2
         if: ${{ !cancelled() && (success() || failure()) }}
@@ -59,7 +61,8 @@ jobs:
         if: steps.framework.outputs.files_exists != 'true'
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
-          arguments: iosX64Test
+          gradle-home-cache-cleanup: true
+          arguments: iosX64Test --scan
       - uses: EnricoMi/publish-unit-test-result-action/composite@4e7013f9576bd22ffdae979dc6e68cb9ec2aeece # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
