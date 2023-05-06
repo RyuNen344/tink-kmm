@@ -75,7 +75,7 @@ GEM
       no_proxy_fix
       octokit (~> 5.0)
       terminal-table (>= 1, < 4)
-    danger-android_lint (0.0.11)
+    danger-android_lint (0.0.12)
       danger-plugin-api (~> 1.0)
       oga
     danger-checkstyle_format (0.1.1)
@@ -126,6 +126,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
+      racc (~> 1.4)
     nokogiri-happymapper (0.9.0)
       nokogiri (~> 1.5)
     octokit (5.6.1)
@@ -173,6 +175,7 @@ PLATFORMS
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   cocoapods
