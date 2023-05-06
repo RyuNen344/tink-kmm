@@ -25,7 +25,7 @@ jobs:
         with:
           arguments: jacocoMergedReport
       - uses: EnricoMi/publish-unit-test-result-action@4e7013f9576bd22ffdae979dc6e68cb9ec2aeece # v2
-        if: always()
+        if: ${{ !cancelled() && (success() || failure()) }}
         with:
           check_name: Test Results android
           files: |
@@ -61,7 +61,7 @@ jobs:
         with:
           arguments: iosX64Test
       - uses: EnricoMi/publish-unit-test-result-action/composite@4e7013f9576bd22ffdae979dc6e68cb9ec2aeece # v2
-        if: always()
+        if: ${{ !cancelled() && (success() || failure()) }}
         with:
           check_name: Test Results iosX64
           files: |
