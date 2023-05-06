@@ -7,7 +7,6 @@
   ],
   // https://docs.renovatebot.com/configuration-options/#automergestrategy
   "automergeStrategy": "squash",
-  "rangeStrategy": "pin",
   packageRules: [
     {
       "groupName": "detekt",
