@@ -8,7 +8,7 @@ plugins {
     id("maven-publish")
     id("signing")
     id("io.github.gradle-nexus.publish-plugin").version("1.3.0")
-    id("io.gitlab.arturbosch.detekt").version("1.23.0-RC1")
+    id("io.gitlab.arturbosch.detekt").version("1.23.0-RC3")
     id("com.louiscad.complete-kotlin").version("1.1.0")
     id("jacoco")
 }
