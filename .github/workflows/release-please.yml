@@ -57,4 +57,4 @@ jobs:
           max_attempts: 3
           retry_on: error
           timeout_minutes: 40
-          command: ./gradlew publishAllPublicationsToSonatypeRepository --stacktrace
+          command: ./gradlew publishAllPublicationsToSonatypeRepository closeAndReleaseSonatypeStagingRepository --stacktrace
