@@ -98,7 +98,7 @@ GEM
     faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
-    faraday-http-cache (2.4.1)
+    faraday-http-cache (2.5.0)
       faraday (>= 0.8)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
@@ -125,6 +125,8 @@ GEM
     nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     nokogiri-happymapper (0.9.0)
       nokogiri (~> 1.5)
@@ -173,6 +175,7 @@ PLATFORMS
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   cocoapods
