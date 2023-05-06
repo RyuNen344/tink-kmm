@@ -5,6 +5,9 @@
     // https://github.com/whitesource/merge-confidence
     "github>whitesource/merge-confidence:beta"
   ],
+  "labels": [
+    "dependencies"
+  ],
   // https://docs.renovatebot.com/configuration-options/#automergestrategy
   "automergeStrategy": "squash",
   packageRules: [
