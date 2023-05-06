@@ -12,16 +12,16 @@ jobs:
   lint-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: reviewdog/action-actionlint@v1
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+      - uses: reviewdog/action-actionlint@42de1e3a0f52d5f8b8390894de87bc603844e530 # v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-      - uses: reviewdog/action-yamllint@v1
+      - uses: reviewdog/action-yamllint@8c429dfe4fc47b1ce1fa99a64e94693880d5dc30 # v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-      - uses: reviewdog/action-markdownlint@v0
+      - uses: reviewdog/action-markdownlint@338cc94870d4aa991f4dbcce1d714bef9bfee777 # v0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
@@ -29,8 +29,8 @@ jobs:
   lint-android:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: reviewdog/action-setup@v1
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+      - uses: reviewdog/action-setup@8dc47785c4a3a899d16d7371637b070e600cd65f # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
@@ -39,7 +39,7 @@ jobs:
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
           arguments: detekt
-      - uses: yutailang0119/action-android-lint@v3
+      - uses: yutailang0119/action-android-lint@17fff6880e4c64c94073ac8c4fb9f2611e9fa5a0 # v3
         with:
           report-path: "**/build/reports/lint-results*.xml"
       - run: < ./build/reports/detekt/detekt.xml reviewdog -f=checkstyle -name="detekt" -reporter="github-pr-review"
@@ -49,7 +49,7 @@ jobs:
   lint-ios:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: reviewdog/action-setup@v1
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+      - uses: reviewdog/action-setup@8dc47785c4a3a899d16d7371637b070e600cd65f # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan

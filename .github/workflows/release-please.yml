@@ -13,7 +13,7 @@ jobs:
   release-please:
     runs-on: macos-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: google-github-actions/release-please-action@c078ea33917ab8cfa5300e48f4b7e6b16606aede # v3
         id: release
         with:
           default-branch: main
@@ -22,7 +22,7 @@ jobs:
           include-v-in-tag: false
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
         if: ${{ steps.release.outputs.release_created }}
       - uses: ./.github/actions/sdkman
         if: ${{ steps.release.outputs.release_created }}
@@ -32,11 +32,11 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         with:
           bundler-cache: true
-      - uses: bazelbuild/setup-bazelisk@v2
+      - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
         if: ${{ steps.release.outputs.release_created }}
       - run: make bootstrap-submodule
         if: ${{ steps.release.outputs.release_created }}
-      - uses: actions/cache@v3
+      - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         if: ${{ steps.release.outputs.release_created }}
         with:
           path: |
@@ -45,7 +45,7 @@ jobs:
           key: v2-bazel-${{ runner.os }}-${{ hashFiles('.git/modules/TinkStub/HEAD') }}
       - run: make archive
         if: ${{ steps.release.outputs.release_created }}
-      - uses: nick-fields/retry@v2.8.3
+      - uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd # v2.8.3
         if: ${{ steps.release.outputs.release_created }}
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
