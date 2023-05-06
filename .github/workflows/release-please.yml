@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           default-branch: main
           release-type: simple
@@ -21,3 +22,39 @@ jobs:
           include-v-in-tag: false
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: ./.github/actions/sdkman
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: ./.github/actions/konan
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: ruby/setup-ruby@v1
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          bundler-cache: true
+      - uses: bazelbuild/setup-bazelisk@v2
+        if: ${{ steps.release.outputs.release_created }}
+      - run: make bootstrap-submodule
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/cache@v3
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          path: |
+            build/bazel
+            Framework/Tink.xcframework
+          key: v2-bazel-${{ runner.os }}-${{ hashFiles('.git/modules/TinkStub/HEAD') }}
+      - run: make archive
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: nick-fields/retry@v2.8.3
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          PGP_KEY_ID: ${{ secrets.PGP_KEY_ID }}
+          PGP_SIGNING_KEY: ${{ secrets.PGP_SIGNING_KEY }}
+          PGP_SIGNING_PASSWORD: ${{ secrets.PGP_SIGNING_PASSWORD }}
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_minutes: 40
+          command: ./gradlew publishAllPublicationsToSonatypeRepository --stacktrace
