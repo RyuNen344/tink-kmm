@@ -8,6 +8,12 @@
 * **ci:** automate maven release ([b1e1d1d](https://github.com/RyuNen344/tink-kmm/commit/b1e1d1d972e5b899e6b10bc8c5658a243d38d189))
 
 
+### Deps
+
+* **deps:** update android gradle plugin to v8 (major) ([#64](https://github.com/RyuNen344/tink-kmm/pull/64)) ([64bae51](https://github.com/RyuNen344/tink-kmm/commit/64bae514929d44939fcaa9705fea3f5c5c732297))
+* **deps:** update dependency gradle to v8 ([#62](https://github.com/RyuNen344/tink-kmm/pull/62)) ([01fe6c6](https://github.com/RyuNen344/tink-kmm/commit/01fe6c6695671e85ece8b513d94191fed559adc1))
+
+
 ### Bug Fixes
 
 * **deps:** update detekt to v1.23.0-rc3 ([#59](https://github.com/RyuNen344/tink-kmm/issues/59)) ([5de6564](https://github.com/RyuNen344/tink-kmm/commit/5de6564ceb26cba3c41315ce912b0f8746e42bd1))
