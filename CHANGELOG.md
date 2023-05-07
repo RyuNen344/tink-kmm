@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.3](https://github.com/RyuNen344/tink-kmm/compare/0.0.2...0.0.3) (2023-05-07)
+
+
+### Features
+
+* **ci:** automate maven release ([b1e1d1d](https://github.com/RyuNen344/tink-kmm/commit/b1e1d1d972e5b899e6b10bc8c5658a243d38d189))
+
+
+### Bug Fixes
+
+* **deps:** update detekt to v1.23.0-rc3 ([#59](https://github.com/RyuNen344/tink-kmm/issues/59)) ([5de6564](https://github.com/RyuNen344/tink-kmm/commit/5de6564ceb26cba3c41315ce912b0f8746e42bd1))
+
 ## [0.0.2](https://github.com/RyuNen344/tink-kmm/compare/0.0.1...0.0.2) (2023-05-06)
 
 
