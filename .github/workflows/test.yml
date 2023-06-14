@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
-      - uses: ruby/setup-ruby@bc1dd263b68cb5626dbb55d5c89777d79372c484 # v1.151.0
+      - uses: ruby/setup-ruby@250fcd6a742febb1123a77a841497ccaa8b9e939 # v1.152.0
         with:
           bundler-cache: true
       - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
