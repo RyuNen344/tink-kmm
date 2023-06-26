@@ -58,5 +58,8 @@ jobs:
         id: framework
         with:
           files: "Framework/Tink.xcframework"
+      - name: build KMM xcframework
+        shell: bash
+        run: ./gradlew :tink:assembleTinkDebugXCFramework
       - uses: github/codeql-action/autobuild@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
       - uses: github/codeql-action/analyze@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
