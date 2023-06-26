@@ -22,7 +22,7 @@ permissions:
   security-events: write
 
 jobs:
-  analyze_kotlin:
+  analyze-kotlin:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
@@ -34,7 +34,7 @@ jobs:
       - uses: github/codeql-action/autobuild@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
       - uses: github/codeql-action/analyze@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
 
-  analyze_swift:
+  analyze-swift:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
@@ -58,8 +58,9 @@ jobs:
         id: framework
         with:
           files: "Framework/Tink.xcframework"
-      - name: build KMM xcframework
-        shell: bash
-        run: ./gradlew :tink:assembleTinkDebugXCFramework
+      - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
+        with:
+          gradle-home-cache-cleanup: true
+          arguments: :tink:assembleTinkDebugXCFramework --scan
       - uses: github/codeql-action/autobuild@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
       - uses: github/codeql-action/analyze@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
