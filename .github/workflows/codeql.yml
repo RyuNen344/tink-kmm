@@ -22,27 +22,13 @@ permissions:
   security-events: write
 
 jobs:
-  analyze-kotlin:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
-      - uses: ./.github/actions/sdkman
-      - uses: ./.github/actions/konan
-      - uses: github/codeql-action/init@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
-        with:
-          languages: java
-      - uses: github/codeql-action/autobuild@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
-      - uses: github/codeql-action/analyze@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
-
-  analyze-swift:
+  analyze:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: github/codeql-action/init@cff3d9e3c9a51dfcf1ea2692cd1cd876dda6d71e # v2
-        with:
-          languages: swift
       - uses: ruby/setup-ruby@250fcd6a742febb1123a77a841497ccaa8b9e939 # v1.152.0
         with:
           bundler-cache: true
@@ -58,6 +44,10 @@ jobs:
         id: framework
         with:
           files: "Framework/Tink.xcframework"
+      - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
+        with:
+          gradle-home-cache-cleanup: true
+          arguments: assemble --scan
       - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
         with:
           gradle-home-cache-cleanup: true
