@@ -44,7 +44,7 @@ jobs:
         id: framework
         with:
           files: "Framework/Tink.xcframework"
-      - uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629 # v2
+      - uses: gradle/gradle-build-action@8e02c8272aba4650563824b7012f8a86158901c6 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: assemble :tink:assembleTinkDebugXCFramework --scan
