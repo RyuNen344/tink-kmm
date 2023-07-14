@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.android.application").version("8.0.2").apply(false)
     id("com.android.library").version("8.0.2").apply(false)
-    kotlin("android").version("1.8.21").apply(false)
-    kotlin("multiplatform").version("1.8.21").apply(false)
+    kotlin("android").version("1.8.22").apply(false)
+    kotlin("multiplatform").version("1.8.22").apply(false)
     id("maven-publish")
     id("signing")
     id("io.github.gradle-nexus.publish-plugin").version("1.3.0")
