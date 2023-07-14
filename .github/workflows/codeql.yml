@@ -29,6 +29,8 @@ jobs:
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: github/codeql-action/init@489225d82a57396c6f426a40e66d461b16b3461d # v2
+        with:
+          config-file: ./.github/codeql/codeql-config.yml
       - uses: ruby/setup-ruby@250fcd6a742febb1123a77a841497ccaa8b9e939 # v1.152.0
         with:
           bundler-cache: true
