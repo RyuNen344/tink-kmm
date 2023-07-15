@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.4](https://github.com/RyuNen344/tink-kmm/compare/0.0.3...0.0.4) (2023-07-15)
+
+
+### Features
+
+* bump kotlin version to 1.8.22 ([#99](https://github.com/RyuNen344/tink-kmm/issues/99)) ([fa2280f](https://github.com/RyuNen344/tink-kmm/commit/fa2280f11f4f75d1c02237ed45aa9bcd111118d0))
+
+
+### Bug Fixes
+
+* **deps:** update detekt to v1.23.0 ([#70](https://github.com/RyuNen344/tink-kmm/issues/70)) ([746b8b7](https://github.com/RyuNen344/tink-kmm/commit/746b8b7535e074a751e93d07469195f25ba959f9))
+
 ## [0.0.3](https://github.com/RyuNen344/tink-kmm/compare/0.0.2...0.0.3) (2023-05-07)
 
 
