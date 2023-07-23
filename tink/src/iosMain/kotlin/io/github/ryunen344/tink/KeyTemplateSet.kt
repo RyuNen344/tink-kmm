@@ -38,8 +38,10 @@ import com.google.crypto.tink.TINKXChaCha20Poly1305
 import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 
+@OptIn(ExperimentalForeignApi::class)
 @Suppress("CyclomaticComplexMethod")
 @Throws(GeneralSecurityException::class)
 actual fun KeyTemplateSet.template(): KeyTemplate = memScopedInstance(
