@@ -19,6 +19,8 @@ import io.github.ryunen344.tink.signature.PublicKeySign
 import io.github.ryunen344.tink.signature.PublicKeyVerify
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
+import kotlinx.cinterop.BetaInteropApi
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 import platform.Foundation.NSData
@@ -30,6 +32,7 @@ import kotlin.reflect.KClass
 
 actual typealias KeysetHandle = com.google.crypto.tink.TINKKeysetHandle
 
+@OptIn(ExperimentalForeignApi::class)
 @Throws(GeneralSecurityException::class, IOException::class)
 actual fun KeysetHandle.writeNoSecret(writer: KeysetWriter) = memScopedInstance(
     block = { writer.value = serializedKeysetNoSecret(it.ptr) },
@@ -51,6 +54,7 @@ inline fun NSString.toKString() = this as String
 
 inline fun NSString.toNSData() = dataUsingEncoding(NSUTF8StringEncoding)
 
+@OptIn(BetaInteropApi::class)
 inline fun NSData.toNSString() = NSString.create(data = this, encoding = NSUTF8StringEncoding)
 
 @Suppress("UNCHECKED_CAST")
@@ -69,6 +73,7 @@ actual fun <P : TinkPrimitive> KeysetHandle.getPrimitive(kClass: KClass<P>): P {
     return primitive as P
 }
 
+@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandle.publicKeysetHandle(): KeysetHandle = memScopedInstance(
     block = {
