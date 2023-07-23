@@ -8,6 +8,7 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
 import io.github.ryunen344.tink.util.toNSData
+import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
@@ -47,7 +48,7 @@ actual fun KeysetHandleGenerator.Companion.read(
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
-@OptIn(ExperimentalForeignApi::class)
+@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.readClearText(reader: KeysetReader): KeysetHandle = memScopedInstance(
     block = {
