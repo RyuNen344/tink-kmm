@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/RyuNen344/tink-kmm/compare/0.0.4...0.0.5) (2023-07-23)
+
+
+### Features
+
+* **deps:** update kotlin monorepo to v1.9.0 ([#76](https://github.com/RyuNen344/tink-kmm/issues/76)) ([08b94c0](https://github.com/RyuNen344/tink-kmm/commit/08b94c06cf1ef4a91ddafbfd1e8f08282f0f8940))
+
 ## [0.0.4](https://github.com/RyuNen344/tink-kmm/compare/0.0.3...0.0.4) (2023-07-15)
 
 
