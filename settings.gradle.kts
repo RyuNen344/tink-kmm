@@ -1,8 +1,20 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "org.openbakery.xcode-plugin") {
+                useModule("org.openbakery:xcode-plugin:0.23.1.30")
+            }
+        }
+    }
     repositories {
         google()
         mavenCentral()
+        maven(url = "https://openbakery.org/repository/") {
+            content {
+                includeGroup("org.openbakery")
+            }
+        }
         gradlePluginPortal()
     }
 }
@@ -13,7 +25,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
 }
 
@@ -31,4 +42,5 @@ gradleEnterprise {
 }
 
 rootProject.name = "Tink-KMM"
+include(":iosApp")
 include(":tink")
