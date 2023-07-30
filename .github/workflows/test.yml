@@ -69,6 +69,40 @@ jobs:
       - uses: EnricoMi/publish-unit-test-result-action/composite@f0b5d2433f350eff587831d4ad22cb15aab75866 # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
-          check_name: Test Results iosX64
+          check_name: Unit Test Results iosX64
           files: |
             **/test-results/**/*.xml
+
+  instrumented-test-ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
+      - uses: ./.github/actions/sdkman
+      - uses: ./.github/actions/konan
+      - uses: ruby/setup-ruby@250fcd6a742febb1123a77a841497ccaa8b9e939 # v1.152.0
+        with:
+          bundler-cache: true
+      - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
+      - run: make bootstrap-submodule
+      - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
+        with:
+          path: |
+            build/bazel
+            Framework/Tink.xcframework
+          key: v2-bazel-${{ runner.os }}-${{ hashFiles('.git/modules/TinkStub/HEAD') }}
+      - uses: andstor/file-existence-action@20b4d2e596410855db8f9ca21e96fbe18e12930b # v2
+        id: framework
+        with:
+          files: "Framework/Tink.xcframework"
+      - run: make archive
+        if: steps.framework.outputs.files_exists != 'true'
+      - uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2
+        with:
+          gradle-home-cache-cleanup: true
+          arguments: :iosApp:xcodetest --scan
+      - uses: EnricoMi/publish-unit-test-result-action/composite@f0b5d2433f350eff587831d4ad22cb15aab75866 # v2
+        if: ${{ !cancelled() && (success() || failure()) }}
+        with:
+          check_name: Instrumented Test Results iosX64
+          files: |
+            **/test-results.xml
