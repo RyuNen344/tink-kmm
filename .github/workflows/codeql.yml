@@ -50,7 +50,9 @@ jobs:
       - uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2
         with:
           gradle-home-cache-cleanup: true
-          arguments: assemble :tink:assembleTinkDebugXCFramework --scan
-      - run: |
-          xcodebuild build -project iosApp/iosApp.xcodeproj -scheme iosApp -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2'
+          arguments: :tink:assembleTinkDebugXCFramework --scan
+      - uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2
+        with:
+          gradle-home-cache-cleanup: true
+          arguments: :iosApp:xcodebuild --scan
       - uses: github/codeql-action/analyze@0ba4244466797eb048eb91a6cd43d5c03ca8bd05 # v2
