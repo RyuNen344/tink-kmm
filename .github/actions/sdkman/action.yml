@@ -1,5 +1,5 @@
-name: "setup sdkman and install via .sdkmanrc"
-description: "install sdkman"
+name: "install sdkman"
+description: "setup sdkman and install via .sdkmanrc"
 runs:
   using: "composite"
   steps:

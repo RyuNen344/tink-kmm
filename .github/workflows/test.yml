@@ -45,6 +45,7 @@ jobs:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
+      - uses: ./.github/actions/xcode-select
       - uses: ruby/setup-ruby@250fcd6a742febb1123a77a841497ccaa8b9e939 # v1.152.0
         with:
           bundler-cache: true
@@ -79,6 +80,7 @@ jobs:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
+      - uses: ./.github/actions/xcode-select
       - uses: ruby/setup-ruby@250fcd6a742febb1123a77a841497ccaa8b9e939 # v1.152.0
         with:
           bundler-cache: true
