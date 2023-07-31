@@ -3,8 +3,7 @@ description: "setup sdkman and install via .xcode-version"
 runs:
   using: "composite"
   steps:
-    - if: ${{ steps.cache-sdkman.outputs.cache-hit != 'true' }}
-      name: read .xcode-version
+    - name: read .xcode-version
       shell: bash
       run: |
         echo "XCODE_VERSION=$(cat .xcode-version)" >> $GITHUB_ENV
@@ -12,4 +11,5 @@ runs:
     - name: execute xcode-select
       shell: bash
       run: |
-        xcode-select --switch "/Applications/Xcode_$XCODE_VERSION.app"
+        echo "select $XCODE_VERSION"
+        sudo xcode-select --switch "/Applications/Xcode_$XCODE_VERSION.app"
