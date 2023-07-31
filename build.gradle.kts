@@ -43,7 +43,7 @@ val localProperty = java.util.Properties().apply {
 allprojects {
     group = "io.github.ryunen344.tink"
     version = File("${rootProject.rootDir}/version.txt").readText().trim()
-    tasks.withType(KotlinCompile::class) {
+    tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
         compilerOptions {
             languageVersion = KotlinVersion.KOTLIN_1_9
