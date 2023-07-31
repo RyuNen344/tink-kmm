@@ -99,7 +99,7 @@ jobs:
       - uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2
         with:
           gradle-home-cache-cleanup: true
-          arguments: :iosApp:simulatorsList :iosApp:xcodetest --scan
+          arguments: :iosApp:simulatorsList :iosApp:xcodetest --scan --info
       - uses: EnricoMi/publish-unit-test-result-action/composite@f0b5d2433f350eff587831d4ad22cb15aab75866 # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
