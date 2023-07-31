@@ -11,7 +11,7 @@ xcodebuild {
         closureOf<org.openbakery.xcode.Destination> {
             platform = "iOS Simulator"
             name = "iPhone 14 Pro"
-            os = "16.2"
+            os = "16.4"
         }
     )
 
