@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   release-please:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - uses: google-github-actions/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d # v3
         id: release
