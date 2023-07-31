@@ -17,13 +17,16 @@ xcodebuild {
 
     // xcode-pluginがSYMROOTをいじるためCONFIGURATION_BUILD_DIRをSYMROOTと揃えることで帳尻を合わせる
     additionalParameters = listOf(
-        // "SYMROOT=${buildDir}/sym/Debug-iphonesimulator",
-        // "BUILD_ROOT=${buildDir}/sym",
-        // "TARGET_BUILD_DIR=${buildDir}/sym",
-        // "BUILT_PRODUCTS_DIR=${buildDir}/sym",
         "CONFIGURATION_BUILD_DIR=\$SYMROOT",
-        // "TEST_HOST=${buildDir}/sym/iosApp.app/iosApp",
     )
+}
+
+tasks.withType<org.openbakery.XcodeBuildTask>().configureEach {
+    dependsOn(":tink:assembleTinkDebugXCFramework")
+}
+
+tasks.withType<org.openbakery.XcodeTestTask>().configureEach {
+    dependsOn(":tink:assembleTinkDebugXCFramework")
 }
 
 // xcodebuild test -project iosApp/iosApp.xcodeproj -scheme iosApp -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4'
