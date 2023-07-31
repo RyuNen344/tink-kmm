@@ -243,7 +243,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export JAVA_HOME=~/.sdkman/candidates/java/current\n\ncd .. && ./gradlew :tink:assembleTinKMMDebugXCFramework && touch tink/build/XCFrameworks\n";
+			shellScript = "env > ./env.txt\n\nexport JAVA_HOME=~/.sdkman/candidates/java/current\n\ncd .. && ./gradlew :tink:assembleTinKMMDebugXCFramework && touch tink/build/XCFrameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

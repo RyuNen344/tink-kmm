@@ -102,6 +102,8 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
           arguments: :iosApp:simulatorsList :iosApp:xcodetest --scan --info
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - uses: EnricoMi/publish-unit-test-result-action/composite@f0b5d2433f350eff587831d4ad22cb15aab75866 # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
