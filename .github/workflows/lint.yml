@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
-      - uses: reviewdog/action-setup@8e48baae926e97848f0863ae248f3b08e089c81f # v1
+      - uses: reviewdog/action-setup@80a06617492b461a66508e2dedf16233f0506804 # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2
@@ -55,6 +55,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
-      - uses: reviewdog/action-setup@8e48baae926e97848f0863ae248f3b08e089c81f # v1
+      - uses: reviewdog/action-setup@80a06617492b461a66508e2dedf16233f0506804 # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
