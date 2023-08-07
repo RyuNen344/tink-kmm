@@ -1,5 +1,5 @@
 name: "select xcode"
-description: "setup sdkman and install via .xcode-version"
+description: "select xcode defined at .xcode-version"
 runs:
   using: "composite"
   steps:
