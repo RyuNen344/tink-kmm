@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     id("com.android.application").version("8.0.2").apply(false)
@@ -42,11 +43,11 @@ val localProperty = java.util.Properties().apply {
 allprojects {
     group = "io.github.ryunen344.tink"
     version = File("${rootProject.rootDir}/version.txt").readText().trim()
-    tasks.withType(KotlinCompile::class) {
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_17.toString()
-            languageVersion = "1.8"
-            apiVersion = "1.8"
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+        compilerOptions {
+            languageVersion = KotlinVersion.KOTLIN_1_9
+            apiVersion = KotlinVersion.KOTLIN_1_9
         }
     }
 }
