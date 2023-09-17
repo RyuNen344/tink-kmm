@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/RyuNen344/tink-kmm/compare/0.0.5...0.0.6) (2023-09-17)
+
+
+### Bug Fixes
+
+* **deps:** update detekt to v1.23.1 ([#114](https://github.com/RyuNen344/tink-kmm/issues/114)) ([6d7c1fc](https://github.com/RyuNen344/tink-kmm/commit/6d7c1fc3e704901951975dda2ec4f6d6d1399e72))
+
 ## [0.0.5](https://github.com/RyuNen344/tink-kmm/compare/0.0.4...0.0.5) (2023-07-23)
 
 
