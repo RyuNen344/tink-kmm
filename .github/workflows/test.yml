@@ -21,11 +21,11 @@ jobs:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
-      - uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2
+      - uses: gradle/gradle-build-action@b5126f31dbc19dd434c3269bf8c28c315e121da2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: testDebugUnitTest --scan
-      - uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2
+      - uses: gradle/gradle-build-action@b5126f31dbc19dd434c3269bf8c28c315e121da2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: jacocoMergedReport
@@ -63,7 +63,7 @@ jobs:
           files: "Framework/Tink.xcframework"
       - run: make archive
         if: steps.framework.outputs.files_exists != 'true'
-      - uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2
+      - uses: gradle/gradle-build-action@b5126f31dbc19dd434c3269bf8c28c315e121da2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: iosX64Test --scan
@@ -98,11 +98,11 @@ jobs:
           files: "Framework/Tink.xcframework"
       - run: make archive
         if: steps.framework.outputs.files_exists != 'true'
-      - uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2
+      - uses: gradle/gradle-build-action@b5126f31dbc19dd434c3269bf8c28c315e121da2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: :iosApp:simulatorsList
-      - uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2
+      - uses: gradle/gradle-build-action@b5126f31dbc19dd434c3269bf8c28c315e121da2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: :iosApp:xcodetest --scan --info
