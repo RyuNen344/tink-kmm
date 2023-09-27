@@ -47,7 +47,7 @@ jobs:
           key: v2-bazel-${{ runner.os }}-${{ hashFiles('.git/modules/TinkStub/HEAD') }}
       - run: make archive
         if: ${{ steps.release.outputs.release_created }}
-      - uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd # v2.8.3
+      - uses: nick-fields/retry@14672906e672a08bd6eeb15720e9ed3ce869cdd4 # v2.9.0
         if: ${{ steps.release.outputs.release_created }}
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
