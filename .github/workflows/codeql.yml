@@ -32,7 +32,7 @@ jobs:
       - uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2
         with:
           config-file: ./.github/codeql/codeql-config.yml
-      - uses: ruby/setup-ruby@52b8784594ec115fd17094752708121dc5dabb47 # v1.154.0
+      - uses: ruby/setup-ruby@d37167af451eb51448db3354e1057b75c4b268f7 # v1.155.0
         with:
           bundler-cache: true
       - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
