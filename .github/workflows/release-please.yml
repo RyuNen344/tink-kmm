@@ -30,7 +30,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
       - uses: ./.github/actions/xcode-select
         if: ${{ steps.release.outputs.release_created }}
-      - uses: ruby/setup-ruby@5cfe23c062c0aac352e765b1b7cc12ea5255ccc4 # v1.156.0
+      - uses: ruby/setup-ruby@54a18e26dbbb1eabc604f317ade9a5788dddef81 # v1.159.0
         if: ${{ steps.release.outputs.release_created }}
         with:
           bundler-cache: true
