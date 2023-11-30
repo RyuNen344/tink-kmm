@@ -68,6 +68,7 @@ kotlin {
                 // for Kotlin/Native interop
                 "-opt-in=kotlinx.cinterop.BetaInteropApi",
                 "-opt-in=kotlinx.cinterop.ExperimentalForeignApi",
+                "-Xexpect-actual-classes",
             )
         )
     }
