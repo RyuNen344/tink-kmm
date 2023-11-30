@@ -70,7 +70,9 @@ subprojects {
         publications.withType<MavenPublication> {
             pom {
                 name.set("Tink KMM")
-                description.set("Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project")
+                description.set(
+                    "Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project"
+                )
                 url.set("https://github.com/RyuNen344/tink-kmm")
                 licenses {
                     license {
