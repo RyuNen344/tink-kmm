@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.7](https://github.com/RyuNen344/tink-kmm/compare/0.0.6...0.0.7) (2023-11-30)
+
+
+### Bug Fixes
+
+* **deps:** update detekt to v1.23.2 ([#166](https://github.com/RyuNen344/tink-kmm/issues/166)) ([f58757b](https://github.com/RyuNen344/tink-kmm/commit/f58757bc4c797832dcb85afb9a26295515fc5a9e))
+* **deps:** update detekt to v1.23.3 ([#168](https://github.com/RyuNen344/tink-kmm/issues/168)) ([77ee74c](https://github.com/RyuNen344/tink-kmm/commit/77ee74c6816cf5b0d2a63514600fdf02ee1ee0ed))
+* **deps:** update detekt to v1.23.4 ([#177](https://github.com/RyuNen344/tink-kmm/issues/177)) ([d090399](https://github.com/RyuNen344/tink-kmm/commit/d090399c610df06a54810ee8e64ec8a3d4ae717b))
+
 ## [0.0.6](https://github.com/RyuNen344/tink-kmm/compare/0.0.5...0.0.6) (2023-09-17)
 
 
