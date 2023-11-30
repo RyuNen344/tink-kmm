@@ -35,7 +35,7 @@ jobs:
           check_name: Test Results android
           files: |
             **/test-results/**/*.xml
-      - uses: codecov/codecov-action@c4cf8a4f03f0ac8585acb7c1b7ce3460ec15782f # v4
+      - uses: codecov/codecov-action@438fa9e3ac8872b7162a502089be7daf796a8fbb # v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
