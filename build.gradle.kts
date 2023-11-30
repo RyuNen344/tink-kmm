@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("com.android.application").version("8.1.4").apply(false)
@@ -124,21 +124,21 @@ tasks.create<JacocoReport>("jacocoMergedReport") {
     project.gradle.afterProject {
         if (rootProject != this && plugins.hasPlugin("jacoco")) {
             executionData.from.addAll(
-                fileTree(buildDir) {
+                project.layout.buildDirectory.asFileTree.matching {
                     includes += mutableSetOf("**/*.exec", "**/*.ec")
                 }
             )
             sourceDirectories.from.addAll(
                 listOf(
-                    "$projectDir/src/androidMain/kotlin",
-                    "$projectDir/src/commonMain/kotlin",
-                    "$buildDir/generated/source/kapt/debug",
+                    layout.projectDirectory.file("src/commonMain/kotlin"),
+                    layout.projectDirectory.file("src/androidMain/kotlin"),
                 )
             )
+
             classDirectories.from.addAll(
                 listOf(
-                    "$buildDir/tmp/kotlin-classes/debug",
-                    "$buildDir/intermediates/javac/debug/classes"
+                    layout.buildDirectory.file("tmp/kotlin-classes/debug"),
+                    layout.buildDirectory.file("intermediates/javac/debug"),
                 )
             )
         }
