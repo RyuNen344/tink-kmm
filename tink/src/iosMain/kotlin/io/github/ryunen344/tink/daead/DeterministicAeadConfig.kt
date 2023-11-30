@@ -5,11 +5,8 @@ import com.google.crypto.tink.TINKDeterministicAeadConfig
 import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
-import kotlinx.cinterop.BetaInteropApi
-import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun DeterministicAeadConfig.Companion.register(): Unit =
     memScopedInstance(

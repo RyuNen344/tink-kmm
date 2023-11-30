@@ -61,6 +61,16 @@ kotlin {
             maybeCreate("iosArm64Test").dependsOn(this)
         }
     }
+
+    compilerOptions {
+        freeCompilerArgs.set(
+            freeCompilerArgs.get() + listOf(
+                // for Kotlin/Native interop
+                "-opt-in=kotlinx.cinterop.BetaInteropApi",
+                "-opt-in=kotlinx.cinterop.ExperimentalForeignApi",
+            )
+        )
+    }
 }
 
 android {

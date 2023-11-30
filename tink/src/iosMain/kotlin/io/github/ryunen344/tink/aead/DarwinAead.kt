@@ -8,12 +8,9 @@ import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
 import io.github.ryunen344.tink.util.toByteArray
 import io.github.ryunen344.tink.util.toNSData
-import kotlinx.cinterop.BetaInteropApi
-import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 class DarwinAead(val native: TINKAeadProtocol) : Aead {
 
     @Throws(GeneralSecurityException::class)
