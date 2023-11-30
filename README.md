@@ -79,6 +79,7 @@ But, CCCrypto has a limitation of supported algorithm.(e.g, it can not be use AE
 | 0.0.4         |   1.8.22   |      1.7.0       |     1.7.0     |
 | 0.0.5         |   1.9.0    |      1.7.0       |     1.7.0     |
 | 0.0.6         |   1.9.10   |      1.7.0       |     1.7.0     |
+| 0.0.7         |   1.9.21   |      1.7.0       |     1.7.0     |
 
 > **Warning**</br>
 > Tink-ObjC 1.7.0 has not been released to CocoaPods yet.</br><https://github.com/google/tink/issues/583></br><https://github.com/google/tink/issues/641></br>
