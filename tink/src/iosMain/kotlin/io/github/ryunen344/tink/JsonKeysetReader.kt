@@ -5,15 +5,16 @@ import io.github.ryunen344.tink.exception.JsonException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
 import io.github.ryunen344.tink.util.toNSData
-import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 
-@OptIn(ExperimentalForeignApi::class)
-actual class JsonKeysetReader actual constructor(bytes: ByteArray) : KeysetReader(
+actual class JsonKeysetReader
+@Throws(JsonException::class)
+actual constructor(bytes: ByteArray) : KeysetReader(
     native = memScopedInstance(
         block = { TINKJSONKeysetReader(serializedKeyset = bytes.toNSData(), error = it.ptr) },
         onError = { throw JsonException(cause = it.asThrowable()) }
     )
 ) {
+    @Throws(JsonException::class)
     actual constructor(json: String) : this(json.encodeToByteArray())
 }

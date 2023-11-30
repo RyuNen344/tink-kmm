@@ -8,12 +8,9 @@ import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
 import io.github.ryunen344.tink.util.toNSData
-import kotlinx.cinterop.BetaInteropApi
-import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 
-@OptIn(ExperimentalForeignApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate): KeysetHandle = memScopedInstance(
     block = {
@@ -29,7 +26,6 @@ actual fun KeysetHandleGenerator.Companion.generateNew(keyTemplate: KeyTemplate)
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
-@OptIn(ExperimentalForeignApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.read(
     reader: KeysetReader,
@@ -48,7 +44,6 @@ actual fun KeysetHandleGenerator.Companion.read(
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.readClearText(reader: KeysetReader): KeysetHandle = memScopedInstance(
     block = {
@@ -61,7 +56,6 @@ actual fun KeysetHandleGenerator.Companion.readClearText(reader: KeysetReader): 
     onError = { throw GeneralSecurityException(cause = it.asThrowable()) }
 )
 
-@OptIn(ExperimentalForeignApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun KeysetHandleGenerator.Companion.readNoSecret(keyset: ByteArray): KeysetHandle = memScopedInstance(
     block = {

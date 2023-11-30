@@ -4,8 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.android.application").version("8.1.4").apply(false)
     id("com.android.library").version("8.1.4").apply(false)
-    kotlin("android").version("1.9.10").apply(false)
-    kotlin("multiplatform").version("1.9.10").apply(false)
+    kotlin("android").version("1.9.21").apply(false)
+    kotlin("multiplatform").version("1.9.21").apply(false)
     id("maven-publish")
     id("signing")
     id("io.github.gradle-nexus.publish-plugin").version("1.3.0")
@@ -70,7 +70,9 @@ subprojects {
         publications.withType<MavenPublication> {
             pom {
                 name.set("Tink KMM")
-                description.set("Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project")
+                description.set(
+                    "Allows you to use Tink Primitive Encryption in your Kotlin Multiplatform Mobile project"
+                )
                 url.set("https://github.com/RyuNen344/tink-kmm")
                 licenses {
                     license {

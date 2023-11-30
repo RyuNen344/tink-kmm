@@ -5,10 +5,8 @@ import com.google.crypto.tink.TINKMacConfig
 import io.github.ryunen344.tink.exception.GeneralSecurityException
 import io.github.ryunen344.tink.util.asThrowable
 import io.github.ryunen344.tink.util.memScopedInstance
-import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 
-@OptIn(ExperimentalForeignApi::class)
 @Throws(GeneralSecurityException::class)
 actual fun MacConfig.Companion.register(): Unit =
     memScopedInstance(
