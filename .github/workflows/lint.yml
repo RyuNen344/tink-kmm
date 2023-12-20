@@ -36,11 +36,11 @@ jobs:
       - uses: reviewdog/action-setup@154bb4214db7d87bdb814a346ec67b3472fe1c5f # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
-      - uses: gradle/gradle-build-action@8cbcb9948b5892387aed077daf6f90e1f0ba5b27 # v2
+      - uses: gradle/gradle-build-action@982da8e78c05368c70dac0351bb82647a9e9a5d2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: lint --scan
-      - uses: gradle/gradle-build-action@8cbcb9948b5892387aed077daf6f90e1f0ba5b27 # v2
+      - uses: gradle/gradle-build-action@982da8e78c05368c70dac0351bb82647a9e9a5d2 # v2
         with:
           gradle-home-cache-cleanup: true
           arguments: detekt --scan
