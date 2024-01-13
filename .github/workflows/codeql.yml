@@ -29,7 +29,7 @@ jobs:
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: ./.github/actions/xcode-select
-      - uses: github/codeql-action/init@b374143c1149a9115d881581d29b8390bbcbb59c # v3
+      - uses: github/codeql-action/init@e5f05b81d5b6ff8cfa111c80c22c5fd02a384118 # v3
         with:
           config-file: ./.github/codeql/codeql-config.yml
       - uses: ruby/setup-ruby@360dc864d5da99d54fcb8e9148c14a84b90d3e88 # v1.165.1
@@ -51,4 +51,4 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
           arguments: assemble --scan
-      - uses: github/codeql-action/analyze@b374143c1149a9115d881581d29b8390bbcbb59c # v3
+      - uses: github/codeql-action/analyze@e5f05b81d5b6ff8cfa111c80c22c5fd02a384118 # v3
