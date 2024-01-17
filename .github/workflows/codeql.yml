@@ -37,7 +37,7 @@ jobs:
           bundler-cache: true
       - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
       - run: make bootstrap-submodule
-      - uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3
+      - uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
         with:
           path: |
             build/bazel
