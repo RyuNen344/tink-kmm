@@ -35,7 +35,7 @@ jobs:
       - uses: ruby/setup-ruby@bd03e04863f52d169e18a2b190e8fa6b84938215 # v1.170.0
         with:
           bundler-cache: true
-      - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
+      - uses: bazelbuild/setup-bazelisk@b39c379c82683a5f25d34f0d062761f62693e0b2 # v3
       - run: make bootstrap-submodule
       - uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
         with:
