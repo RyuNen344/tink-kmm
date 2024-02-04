@@ -34,7 +34,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         with:
           bundler-cache: true
-      - uses: bazelbuild/setup-bazelisk@95c9bf48d0c570bb3e28e57108f3450cd67c1a44 # v2
+      - uses: bazelbuild/setup-bazelisk@b39c379c82683a5f25d34f0d062761f62693e0b2 # v3
         if: ${{ steps.release.outputs.release_created }}
       - run: make bootstrap-submodule
         if: ${{ steps.release.outputs.release_created }}
