@@ -3,7 +3,7 @@ description: "setup sdkman and install via .sdkmanrc"
 runs:
   using: "composite"
   steps:
-    - uses: actions/cache/restore@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
+    - uses: actions/cache/restore@ab5e6d0c87105b4c9c2047343972218f562e4319 # v4
       id: cache-sdkman
       with:
         path: |
@@ -26,7 +26,7 @@ runs:
         echo "JAVA_HOME=$HOME/.sdkman/candidates/java/current" >> $GITHUB_ENV
 
     - if: ${{ steps.cache-sdkman.outputs.cache-hit != 'true' }}
-      uses: actions/cache/save@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
+      uses: actions/cache/save@ab5e6d0c87105b4c9c2047343972218f562e4319 # v4
       with:
         path: |
           ~/.sdkman
