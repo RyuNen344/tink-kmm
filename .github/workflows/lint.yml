@@ -20,7 +20,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-      - uses: reviewdog/action-yamllint@e419e43894e391d358ebf996800673d72de6c69b # v1
+      - uses: reviewdog/action-yamllint@81750f17598452d2e2656b7281a55788abafc205 # v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
