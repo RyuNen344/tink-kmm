@@ -44,7 +44,7 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
           arguments: detekt --scan
-      - uses: yutailang0119/action-android-lint@17fff6880e4c64c94073ac8c4fb9f2611e9fa5a0 # v3
+      - uses: yutailang0119/action-android-lint@bd0b5a7d2cc453d16080b90e2a975d4af4aa9588 # v4
         with:
           report-path: "**/build/reports/lint-results*.xml"
       - run: < ./build/reports/detekt/detekt.xml reviewdog -f=checkstyle -name="detekt" -reporter="github-pr-review"
