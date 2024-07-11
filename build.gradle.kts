@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.android.application").version("8.3.2").apply(false)
-    id("com.android.library").version("8.3.2").apply(false)
+    id("com.android.application").version("8.5.1").apply(false)
+    id("com.android.library").version("8.5.1").apply(false)
     kotlin("android").version("1.9.23").apply(false)
     kotlin("multiplatform").version("1.9.23").apply(false)
     id("maven-publish")
