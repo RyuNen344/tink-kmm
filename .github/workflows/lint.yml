@@ -24,7 +24,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-      - uses: reviewdog/action-markdownlint@7c945172feb13e44779783ebae77cdd185607a7f # v0
+      - uses: reviewdog/action-markdownlint@28fb4224271253fedd5079b61de820d6228041fd # v0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
