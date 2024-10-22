@@ -29,7 +29,7 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
           arguments: jacocoMergedReport
-      - uses: EnricoMi/publish-unit-test-result-action@30eadd5010312f995f0d3b3cff7fe2984f69409e # v2
+      - uses: EnricoMi/publish-unit-test-result-action@170bf24d20d201b842d7a52403b73ed297e6645b # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
           check_name: Test Results android
@@ -67,7 +67,7 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
           arguments: iosX64Test --scan
-      - uses: EnricoMi/publish-unit-test-result-action/composite@30eadd5010312f995f0d3b3cff7fe2984f69409e # v2
+      - uses: EnricoMi/publish-unit-test-result-action/composite@170bf24d20d201b842d7a52403b73ed297e6645b # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
           check_name: Unit Test Results iosX64
@@ -106,7 +106,7 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
           arguments: :iosApp:xcodetest --scan --info
-      - uses: EnricoMi/publish-unit-test-result-action/composite@30eadd5010312f995f0d3b3cff7fe2984f69409e # v2
+      - uses: EnricoMi/publish-unit-test-result-action/composite@170bf24d20d201b842d7a52403b73ed297e6645b # v2
         if: ${{ !cancelled() && (success() || failure()) }}
         with:
           check_name: Instrumented Test Results iosX64
