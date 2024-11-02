@@ -15,7 +15,7 @@ jobs:
   lint-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: reviewdog/action-actionlint@7eeec1dd160c2301eb28e1568721837d084558ad # v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -32,7 +32,7 @@ jobs:
   lint-android:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887 # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
@@ -54,7 +54,7 @@ jobs:
   lint-ios:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887 # v1
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
