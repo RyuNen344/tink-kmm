@@ -9,14 +9,14 @@ plugins {
     id("maven-publish")
     id("signing")
     id("io.github.gradle-nexus.publish-plugin").version("2.0.0")
-    id("io.gitlab.arturbosch.detekt").version("1.23.6")
+    id("io.gitlab.arturbosch.detekt").version("1.23.7")
     id("com.louiscad.complete-kotlin").version("1.1.0")
     id("jacoco")
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-rules-libraries:1.23.6")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-rules-libraries:1.23.7")
 }
 
 detekt {
