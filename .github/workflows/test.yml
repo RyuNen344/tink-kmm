@@ -46,7 +46,7 @@ jobs:
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: ./.github/actions/xcode-select
-      - uses: ruby/setup-ruby@6bd3d993c602f6b675728ebaecb2b569ff86e99b # v1.174.0
+      - uses: ruby/setup-ruby@7d3497fd78c07c0d84ebafa58d8dac60cd1f0763 # v1.199.0
         with:
           bundler-cache: true
       - uses: bazelbuild/setup-bazelisk@b39c379c82683a5f25d34f0d062761f62693e0b2 # v3
@@ -81,7 +81,7 @@ jobs:
       - uses: ./.github/actions/sdkman
       - uses: ./.github/actions/konan
       - uses: ./.github/actions/xcode-select
-      - uses: ruby/setup-ruby@6bd3d993c602f6b675728ebaecb2b569ff86e99b # v1.174.0
+      - uses: ruby/setup-ruby@7d3497fd78c07c0d84ebafa58d8dac60cd1f0763 # v1.199.0
         with:
           bundler-cache: true
       - uses: bazelbuild/setup-bazelisk@b39c379c82683a5f25d34f0d062761f62693e0b2 # v3
