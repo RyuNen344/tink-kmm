@@ -46,7 +46,7 @@ kotlin {
             implementation(kotlin("test"))
         }
         getByName("androidMain").dependencies {
-            implementation("com.google.crypto.tink:tink-android:1.7.0")
+            implementation("com.google.crypto.tink:tink-android:1.16.0")
         }
         create("iosMain") {
             dependsOn(getByName("commonMain"))
